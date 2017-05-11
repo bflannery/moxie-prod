@@ -17,11 +17,13 @@ export default Backbone.Collection.extend({
   // Push to Client Page
 
   getClients(company) {
+    console.log(company);
     $.ajax({
       type: 'GET',
       url: 'https://api.backendless.com/v1/data/Clients',
       success: (clients) => {
         return clients.data.filter((client, i ,arr)=>{
+          console.log(client);
             if(client.clientName === company) {
               this.trigger('change');
               browserHistory.push('/clients/' + client.objectId);

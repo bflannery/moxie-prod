@@ -50,6 +50,11 @@ body{
   flex: 3 1 65%;
   order: 2;
 	border-left: 1px solid black;
+	-webkit-transition:  border-left 3s ease;
+-moz-transition:  border 3s ease;
+-o-transition:  border 3s ease;
+-ms-transition: border 3s ease;
+transition: border-left 3s ease;
 }
 
 .main-container > .sidebar-1 {

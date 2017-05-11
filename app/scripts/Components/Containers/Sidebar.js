@@ -14,9 +14,6 @@ export default React.createClass({
         sideBar = (
           <div className = "sidebar-button-container">
           <button className="side-button add-client-button" onClick={this.toggleNewFolder}>Add Folder</button>
-          <button className="side-button add-image-button" onClick={this.imageModal}> Add Client Logo </button>
-
-
           </div>
         );
       } else if (this.props.folder){
@@ -56,3 +53,5 @@ export default React.createClass({
     store.clients.get(this.props.clientId).set({addPhoto: true});
   }
 });
+
+          // <button className="side-button add-image-button" onClick={this.imageModal}> Add Client Logo </button>

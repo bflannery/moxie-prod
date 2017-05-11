@@ -6,11 +6,12 @@ import $ from 'jquery';
 
 export default React.createClass({
   render() {
+    console.log(this.props);
   if(this.props.clientFolder) {
     return (
         <li className = "nav-client-folder">
-          <Link to={`/folders/${this.props.clientFolder.folders.objectId}`}  className="nav-client-folder-link">
-            <span> {this.props.clientFolder.folders.folderName} </span>
+          <Link to={`/folders/${this.props.clientFolder.folders.objectId}`} onClick={this.reloadWindow} className="nav-client-folder-link">
+            <i className="fa fa-folder navBar-icon" aria-hidden="true"></i><span> {this.props.clientFolder.folders.folderName} </span>
           </Link>
       </li>
       );
@@ -19,5 +20,9 @@ export default React.createClass({
       <div />
     );
   }
+},
+
+reloadWindow() {
+  window.location.reload();
 }
   });

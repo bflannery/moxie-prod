@@ -15,7 +15,7 @@ export default React.createClass({
           <h5> Your Folders </h5>
           <div className="nav-client-folder">
           <Link to={`/clients/${this.props.client.objectId}`}  className="nav-client-folder-link">
-            <span> Home </span>
+            <i className="fa fa-home navbar-icon" aria-hidden="true"></i><span className="nav-home"> Home </span>
           </Link>
           </div>
           <NavBarClientFolders clientFolders={this.props.client.clientFolders}/>
@@ -28,8 +28,6 @@ export default React.createClass({
         navBar = (
           <ul className = "navSideBar-links-container">
             <Link to="/home" onClick={this.resetState} className ="navSideBar-links"><i className="fa fa-users navbar-icon" aria-hidden="true"></i>Clients</Link>
-            <Link to="/files" onClick={this.resetState} className="navSideBar-links"><i className="fa fa-files-o navbar-icon" aria-hidden="true"></i>Files</Link>
-
             </ul>
         );
     }
@@ -51,6 +49,6 @@ export default React.createClass({
 
 
 
-
+//<Link to="/files" onClick={this.resetState} className="navSideBar-links"><i className="fa fa-files-o navbar-icon" aria-hidden="true"></i>Files</Link>
 //<Link to="/recent" onClick={this.resetState} className ="navSideBar-links">Recent</Link>
 //<Link to="/trash" onClick={this.resetState} className ="navSideBar-links">Trash</Link>

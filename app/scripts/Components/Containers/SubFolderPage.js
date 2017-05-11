@@ -64,7 +64,7 @@ updateState() {
 
 if(store.clients.get(this.state.folder.clientId) !== undefined){
   this.setState({
-    client: store.clients.get(this.state.folder.clientId)
+    client: store.clients.get(this.state.folder.clientId).toJSON()
   });
 }
 

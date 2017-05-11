@@ -5,27 +5,35 @@
 }
 
 .nav-client-folder {
-background-color: $primary-yellow;;
 text-align: center;
 padding: 1rem;
-border: 1px solid black;
+border-radius: 5px;
 color: white;
 margin: 2rem 1rem;
 .nav-client-folder-link {
-  color: $primary-logo-darkblue;
+  color: $primary-logo-lightblue;
   }
 }
 
 .nav-client-folder:hover{
-  background-color: $primary-logo-darkblue;
+  background-color: $primary-logo-lightblue;
     .nav-client-folder-link {
         color: $primary-yellow;
       }
 }
 
+
+
 .navSideBar-folders-container {
   text-align: center;
+    h5 {
+      display: none;
+    }
+    .secondary-container {
+      display: none;
+    }
 }
+
 
 .navbar-icon {
   display: none;
@@ -62,6 +70,26 @@ margin: 2rem 1rem;
     margin: 0;
 
   }
+
+  .navSideBar-folders-container {
+    text-align: center;
+      h5 {
+        display: block;
+      }
+      .secondary-container {
+        display: block;
+      }
+  }
+
+.nav-client-folder-link {
+  font-size: 1.2rem;
+}
+
+.fa-folder {
+  vertical-align: middle;
+  margin-right: .5rem;
+}
+
 }
 
 @media(min-width: 995px) {

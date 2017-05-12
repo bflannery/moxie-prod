@@ -5,13 +5,17 @@ import store from '../store';
 
 export default React.createClass({
   render() {
-  
+    console.log(this.props);
+
 
     let clientFolders;
     if(!this.props.client.clientFolders) {
       clientFolders = <div />;
     } else {
-      clientFolders = this.props.client.clientFolders.map((clientFolder, i, arr) => {
+
+      let sortedFolder = this.props.client.clientFolders.sort(function(a,b) {return (a.folderName > b.folderName) ? 1 : ((b.folderName > a.folderName) ? -1 : 0);} );
+
+      clientFolders = sortedFolder.map((clientFolder, i, arr) => {
         return <ClientFolder key={i} clientFolder={clientFolder} session={this.props.session}/>
       });
     }

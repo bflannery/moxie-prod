@@ -10,9 +10,6 @@ export default Backbone.Model.extend({
     idAttribute: 'objectId',
     defaults: {
         clientName: '',
-        addFolder: false,
-        addFileModal: false,
-        addPhoto: false,
         folderURL: ''
     },
 
@@ -183,5 +180,12 @@ export default Backbone.Model.extend({
           return true;
       });
       console.log(allItems);
+    },
+
+    addPhoto(fileUrl){
+      console.log(this);
+      console.log(fileUrl);
+      this.save({pic: fileUrl}, {type: 'PUT'});
+      this.set({addPhotoModal: false});
     }
 });

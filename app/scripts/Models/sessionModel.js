@@ -25,8 +25,9 @@ initialize() {
   defaults: {
     auth: false,
     passwordReset: null,
-    addFolder: false,
     addFileModal: false,
+    addFolderModal: false,
+    addPhotoModal: false,
     email: '',
     company: '',
   },

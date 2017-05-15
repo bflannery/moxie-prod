@@ -11,7 +11,7 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      dropzoneFiles: []
+      files: []
     };
   },
 
@@ -19,7 +19,7 @@ export default React.createClass({
       console.log(this.props);
       let dropzoneFiles = (
               <div className="files-container">
-                <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop} id="dropzone" name="files" multiple/>
+                <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop} id="dropzone"/>
                 <div className="modal-button-container">
                   <input type="button" onClick={this.onOpenClick} value="Add Photo" className="button add-button"/>
                   <input type="button" onClick={this.closeModal} value="Cancel" className="button close-button"/>
@@ -27,20 +27,20 @@ export default React.createClass({
               </div>
             );
 
-      if (this.state.dropzoneFiles.length > 0) {
+      if (this.state.files.length > 0) {
           dropzoneFiles = (
               <div>
-                <div key={this.state.dropzoneFile} className="upload-file-container">
-                     {this.state.dropzoneFiles.map((dropzoneFile, i) =>
+                <div key={this.state.files.file} className="upload-file-container">
+                     {this.state.files.map((file, i) =>
                          <div>
                            <i className="fa fa-file-o dropzone-file-icon" aria-hidden="true"></i>
-                           <span className="file-name"> {dropzoneFile.name} </span>
+                           <span className="file-name"> {file.name} </span>
                          </div>
                        )}
                 </div>
                  <div>
                     <div className="modal-button-container">
-                      <input type="button" onClick={this.uploadFiles} value="Upload Photo" className="button add-button"/>
+                      <input type="button" onClick={this.uploadPhoto} value="Upload Photo" className="button add-button"/>
                       <input type="button" onClick={this.closeModal} value="Cancel" className="button close-button"/>
                     </div>
                 </div>
@@ -58,15 +58,15 @@ export default React.createClass({
     },
 
     onDrop(acceptedFiles, rejectedFiles){
-    this.setState({files: acceptedFiles});
-  },
-  onOpenClick(){
-    this.dropzone.open();
-  },
-  updateState(){
-    this.setState({user: store.user.toJSON()});
-  },
-  upload(){
+      this.setState({files: acceptedFiles});
+    },
+
+    onOpenClick(){
+      this.dropzone.open();
+    },
+
+
+  uploadPhoto(){
     let fd = new FormData();
     fd.append('upload', this.state.files[0])
     $.ajax({
@@ -74,7 +74,7 @@ export default React.createClass({
       data: fd,
       processData: false,
       contentType: false,
-      url: 'https://api.backendless.com/v1/files/'+this.state.files[0].name,
+      url: 'https://api.backendless.com/v1/files/Moxie/clients/'+ this.props.client.clientName + '/clientLogos/' + this.state.files[0].name,
       headers: {
         'application-id': config.appId,
         'secret-key': config.secret,
@@ -83,13 +83,13 @@ export default React.createClass({
       success: (response)=>{
         response = JSON.parse(response);
         console.log(response.fileURL);
-        store.user.addPhoto(response.fileURL);
-        browserHistory.push('/user/'+this.props.params.id);
+        store.clients.get(this.props.client.objectId).addPhoto(response.fileURL);
+        store.session.set({addPhotoModal: false});
       }
     })
   },
 
     closeModal() {
-      store.session.set({addFileModal: false});
+    store.session.set({addPhotoModal: false});
     }
   });

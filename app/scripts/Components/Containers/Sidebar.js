@@ -6,7 +6,6 @@ export default React.createClass({
 
 
   render() {
-    console.log(this.props);
     let sideBar;
     if(this.props.session.auth === false) {
       if(this.props.folder) {
@@ -55,7 +54,7 @@ export default React.createClass({
   //Set addFolder : true through Session Model
 
   toggleNewFolder(e) {
-    store.session.set({ addFolder: true });
+    store.session.set({ addFolderModal: true });
   },
 
   dropZoneModal(e) {
@@ -63,7 +62,7 @@ export default React.createClass({
   },
 
   imageModal(e) {
-    store.clients.get(this.props.clientId).set({addPhoto: true});
+    store.session.set({ addPhotoModal: true});
   },
 
   goBack(e){

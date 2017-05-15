@@ -69,36 +69,45 @@ export default React.createClass({
 
 
   render() {
+    console.log(this.state);
 
+    let styles = {
+      height: "100px",
+      backgroundImage: `url(${this.state.client.pic})`,
+      backgroundPosition: 'center center',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'contain',
+    }
 
     let clientContainer = <div className="main primary-container"/>
 
     if(this.state.client.clientName) {
      clientContainer = (
         <div className="main primary-container">
+          <div style={styles} className="client-logo"/>
           <h2> {this.state.client.clientName} </h2>
           <ClientFolders client={this.state.client} session={this.state.session}/>
         </div>
     );
 
-    if(this.state.session.addFolder === true) {
-      clientContainer = (
-       <div className="main primary-container">
-         <h2> {this.state.client.clientName} </h2>
-         <NewClientForm client={this.state.client}/>
-         <ClientFolders client={this.state.client} session={this.state.session}/>
-       </div>
-     );
-     
-   } else if(this.state.client.addPhoto) {
-       clientContainer = (
-         <div className="main primary-container">
-           <h2> {this.state.client.clientName} </h2>
-           <ImageModal client={this.state.client}/>
-           <ClientFolders client={this.state.client} session={this.state.session}/>
-         </div>
-       );
-     }
+            if(this.state.session.addFolderModal === true) {
+              clientContainer = (
+               <div className="main primary-container">
+                 <h2> {this.state.client.clientName} </h2>
+                 <NewClientForm client={this.state.client}/>
+                 <ClientFolders client={this.state.client} session={this.state.session}/>
+               </div>
+             );
+
+           } else if(this.state.session.addPhotoModal === true) {
+               clientContainer = (
+                 <div className="main primary-container">
+                   <h2> {this.state.client.clientName} </h2>
+                   <ImageModal client={this.state.client}/>
+                   <ClientFolders client={this.state.client} session={this.state.session}/>
+                 </div>
+               );
+             }
   }
 
 
@@ -112,9 +121,5 @@ export default React.createClass({
         </div>
         </div>
        );
-     },
-
-   handleFile() {
-     store.clients.get(this.state.client.objectId).set({addFileModal: true});
-   }
+     }
 });

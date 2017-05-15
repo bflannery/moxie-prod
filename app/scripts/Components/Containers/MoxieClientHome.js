@@ -89,6 +89,7 @@ export default React.createClass({
          <ClientFolders client={this.state.client} session={this.state.session}/>
        </div>
      );
+     
    } else if(this.state.client.addPhoto) {
        clientContainer = (
          <div className="main primary-container">

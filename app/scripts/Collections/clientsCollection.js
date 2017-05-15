@@ -27,7 +27,7 @@ export default Backbone.Collection.extend({
             if(client.clientName === company) {
               this.trigger('change');
               browserHistory.push('/clients/' + client.objectId);
-            }
+            } 
         });
       },
       error: () => {

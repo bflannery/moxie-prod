@@ -6,19 +6,32 @@ export default React.createClass({
 
 
   render() {
+    console.log(this.props);
     let sideBar;
     if(this.props.session.auth === false) {
+      if(this.props.folder) {
+        sideBar = (
+        <div className = "sidebar-button-container">
+          <button className="side-button back-button" onClick={this.goBack}>Back</button>
+        </div>
+        );
+      } else {
         sideBar = <div />;
+      }
     } else {
       if(this.props.clientId) {
         sideBar = (
           <div className = "sidebar-button-container">
+                    <button className="side-button back-button" onClick={this.goBack}>Back</button>
           <button className="side-button add-client-button" onClick={this.toggleNewFolder}>Add Folder</button>
+          <button className="side-button add-image-button" onClick={this.imageModal}> Add Client Logo </button>
+
           </div>
         );
       } else if (this.props.folder){
         sideBar = (
           <div className = "sidebar-button-container">
+          <button className="side-button back-button" onClick={this.goBack}>Back</button>
           <button className="side-button add-file-button" onClick={this.dropZoneModal}> Add Files </button>
           </div>
         );
@@ -51,7 +64,9 @@ export default React.createClass({
 
   imageModal(e) {
     store.clients.get(this.props.clientId).set({addPhoto: true});
+  },
+
+  goBack(e){
+    browserHistory.goBack();
   }
 });
-
-          // <button className="side-button add-image-button" onClick={this.imageModal}> Add Client Logo </button>

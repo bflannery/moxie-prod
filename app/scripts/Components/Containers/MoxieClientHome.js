@@ -98,7 +98,7 @@ export default React.createClass({
           }
 
 
-        if(this.state.session.addFolderModal === true) {
+        if(this.state.session.addFolder === true) {
             clientContainer = (
                <div className="main primary-container">
                  <h2> {this.state.client.clientName} </h2>

@@ -26,7 +26,7 @@ initialize() {
     auth: false,
     passwordReset: null,
     addFileModal: false,
-    addFolderModal: false,
+    addFolder: false,
     addPhotoModal: false,
     email: '',
     company: '',

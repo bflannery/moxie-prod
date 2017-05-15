@@ -46,6 +46,11 @@
   background: white;
 }
 
+.client-logo {
+  margin: 0rem 2rem 3rem 2rem;
+  width: 40%;
+}
+
 @media(min-width:800px) {
 
   .title-add-container {
@@ -75,7 +80,5 @@
     top: 0.4rem;
   }
 
-  .client-logo {
-    margin: 1rem 2rem 3rem 2rem;
-  }
+
 }

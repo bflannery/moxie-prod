@@ -33,7 +33,7 @@ export default React.createClass({
                 <div key={this.state.files.file} className="upload-file-container">
                      {this.state.files.map((file, i) =>
                          <div>
-                           <i className="fa fa-file-o dropzone-file-icon" aria-hidden="true"></i>
+                          <i className="fa fa-file-image-o dropzone-file-icon" aria-hidden="true"></i>
                            <span className="file-name"> {file.name} </span>
                          </div>
                        )}

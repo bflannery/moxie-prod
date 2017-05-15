@@ -1,7 +1,9 @@
 import React from 'react';
 import {browserHistory, Link} from 'react-router';
+import SearchBar from './SearchBar';
 import Logout from './Logout';
 import store from '../store';
+import HeaderNav from './HeaderNav';
 
 
 export default React.createClass({
@@ -11,7 +13,7 @@ export default React.createClass({
         <div className="header-logo-container">
          <img src="../../assets/images/wemoxie_logo.png" height="125px" width="150px"/>
         </div>
-        <Logout />
+        <HeaderNav />
       </div>
     );
   },

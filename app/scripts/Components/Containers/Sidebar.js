@@ -54,7 +54,7 @@ export default React.createClass({
   //Set addFolder : true through Session Model
 
   toggleNewFolder(e) {
-    store.session.set({ addFolderModal: true });
+    store.session.set({ addFolder: true });
   },
 
   dropZoneModal(e) {

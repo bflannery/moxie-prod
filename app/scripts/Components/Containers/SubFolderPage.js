@@ -82,6 +82,15 @@ if(store.folders.get(this.props.params.id) !== undefined) {
   })
 },
   render() {
+    console.log(this.state);
+
+    let styles = {
+      height: "100px",
+      backgroundImage: `url(${this.state.client.pic})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'contain',
+    }
+    
     let subFolderContainer;
 
     if(this.state.folder === undefined) {
@@ -94,7 +103,14 @@ if(store.folders.get(this.props.params.id) !== undefined) {
           <SubFolderFiles files={this.state.files} folder={this.state.folder} session={this.state.session}/>
         </div>
       );
-
+      if(this.state.client.pic) {
+        subFolderContainer = (
+          <div className="main primary-container">
+            <div style={styles} className="client-logo"/>
+            <SubFolderFiles files={this.state.files} folder={this.state.folder} session={this.state.session}/>
+          </div>
+        );
+      }
 
       if(this.state.session.addFileModal === true) {
         subFolderContainer = (

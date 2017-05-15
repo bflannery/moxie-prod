@@ -74,24 +74,32 @@ export default React.createClass({
     let styles = {
       height: "100px",
       backgroundImage: `url(${this.state.client.pic})`,
-      backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
     }
 
-    let clientContainer = <div className="main primary-container"/>
+   let clientContainer = <div className="main primary-container"/>
 
     if(this.state.client.clientName) {
      clientContainer = (
         <div className="main primary-container">
-          <div style={styles} className="client-logo"/>
           <h2> {this.state.client.clientName} </h2>
           <ClientFolders client={this.state.client} session={this.state.session}/>
         </div>
     );
 
-            if(this.state.session.addFolderModal === true) {
-              clientContainer = (
+        if(this.state.client.pic) {
+          clientContainer = (
+            <div className="main primary-container">
+              <div style={styles} className="client-logo"/>
+              <ClientFolders client={this.state.client} session={this.state.session}/>
+            </div>
+          );
+          }
+
+
+        if(this.state.session.addFolderModal === true) {
+            clientContainer = (
                <div className="main primary-container">
                  <h2> {this.state.client.clientName} </h2>
                  <NewClientForm client={this.state.client}/>
@@ -108,6 +116,7 @@ export default React.createClass({
                  </div>
                );
              }
+
   }
 
 

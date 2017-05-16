@@ -18,7 +18,8 @@ export default React.createClass({
 
   searchFiles(e) {
     e.preventDefault();
-    searchFile = this.refs.searchFile.value
+    let searchFile = this.refs.searchFile.value
+    store.files.searchFiles(searchFile);
     console.log(searchFile);
   }
 

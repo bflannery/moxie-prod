@@ -43,6 +43,10 @@ font-size: 6rem;
   color: white;
 }
 
+.login-input:focus {
+  background-color: $primary-logo-lightblue;
+}
+
 button{
   appearance: none;
   outline: 0;
@@ -58,7 +62,6 @@ button{
 
   &:hover{
     background-color: $primary-yellow;
-    color: $primary-logo-lightblue;
   }
 }
 

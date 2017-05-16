@@ -59,7 +59,7 @@ export default React.createClass({
             </div>
               <NavSideBar session={this.state.session}/>
               <Sidebar session={this.state.session}/>
-              </div>  
+              </div>
           </div>
 
     );

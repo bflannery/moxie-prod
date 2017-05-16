@@ -28,6 +28,7 @@ export default React.createClass({
         navBar = (
           <ul className = "navSideBar-links-container">
             <Link to="/home" onClick={this.resetState} className ="navSideBar-links"><i className="fa fa-users navbar-icon" aria-hidden="true"></i>Clients</Link>
+          
             </ul>
         );
     }
@@ -49,6 +50,6 @@ export default React.createClass({
 
 
 
-//<Link to="/files" onClick={this.resetState} className="navSideBar-links"><i className="fa fa-files-o navbar-icon" aria-hidden="true"></i>Files</Link>
+
 //<Link to="/recent" onClick={this.resetState} className ="navSideBar-links">Recent</Link>
 //<Link to="/trash" onClick={this.resetState} className ="navSideBar-links">Trash</Link>

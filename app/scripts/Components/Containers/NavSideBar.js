@@ -28,7 +28,7 @@ export default React.createClass({
         navBar = (
           <ul className = "navSideBar-links-container">
             <Link to="/home" onClick={this.resetState} className ="navSideBar-links"><i className="fa fa-users navbar-icon" aria-hidden="true"></i>Clients</Link>
-          
+            <Link to="/files" onClick={this.resetState} className="navSideBar-links"><i className="fa fa-files-o navbar-icon" aria-hidden="true"></i>Files</Link>
             </ul>
         );
     }

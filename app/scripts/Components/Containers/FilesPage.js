@@ -6,6 +6,7 @@ import store from '../../store';
 import Header from '../Header';
 import Sidebar from './Sidebar';
 import NavSideBar from './NavSideBar';
+import Files from '../Files';
 
 export default React.createClass({
 
@@ -44,18 +45,15 @@ export default React.createClass({
       });
     },
     render() {
+
+      console.log(this.state);
     return (
       <div className="files-container">
         <Header/>
         <div className="main-container">
-
             <div className="main primary-container">
               <h2> Files </h2>
-              <ul className="secondary-container">
-                <li className="client-file"> File </li>
-                <li className="client-file"> File </li>
-                <li className="client-file"> File </li>
-              </ul>
+              <Files files={this.state.files} clients={this.state.clients}/>
             </div>
               <NavSideBar session={this.state.session}/>
               <Sidebar session={this.state.session}/>

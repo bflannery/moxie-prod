@@ -129,7 +129,7 @@ if(store.folders.get(this.props.params.id) !== undefined) {
 
     return (
       <div className="subfolder-container">
-        <Header/>
+        <Header session={this.state.session} client={this.state.client}/>
         <div className="main-container">
         {subFolderContainer}
         <NavSideBar session={this.state.session} client={this.state.client}/>

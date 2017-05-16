@@ -56,7 +56,7 @@ export default React.createClass({
               <Files files={this.state.files} clients={this.state.clients}/>
             </div>
               <NavSideBar session={this.state.session}/>
-              <Sidebar session={this.state.session}/>
+              <Sidebar session={this.state.session} files={this.state.files}/>
               </div>
           </div>
 

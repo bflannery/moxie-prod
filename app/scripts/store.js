@@ -19,7 +19,6 @@ import fileStorage from './Collections/fileStorageCollection';
 import fileStore from './Models/fileStorageModel';
 
 
-
 export default {
 
   session : new Session(),
@@ -40,6 +39,6 @@ export default {
   folder : new Folder(),
 
   fileStorage : new fileStorage(),
-  fileStore : new fileStore()
+  fileStore : new fileStore(),
 
 };

@@ -19,7 +19,7 @@ margin: 2rem 1rem;
 .nav-client-folder:hover{
   background-color: $primary-logo-lightblue;
     .nav-client-folder-link {
-        color: $primary-yellow;
+        color: white;
       }
 }
 
@@ -51,7 +51,7 @@ margin: 2rem 1rem;
 
 .navSideBar-links:hover {
   background: $primary-logo-lightblue;
-  color: $primary-yellow;
+  color: white;
   border-radius: 10px;
 }
 
@@ -59,7 +59,7 @@ margin: 2rem 1rem;
   .sidebar-1 {
     overflow: scroll;
   }
-  
+
   .navbar-icon {
     display:block;
     font-size: 2rem;

@@ -19,8 +19,8 @@ export default React.createClass({
   searchFiles(e) {
     e.preventDefault();
     let searchFile = this.refs.searchFile.value
-    store.files.searchFiles(searchFile);
-    console.log(searchFile);
+    browserHistory.push(`/files/search/${searchFile}`)
+    sessionStorage.searchTerm = searchFile;
   }
 
 

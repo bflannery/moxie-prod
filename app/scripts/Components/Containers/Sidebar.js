@@ -43,12 +43,17 @@ export default React.createClass({
           <button className="side-button add-file-button" onClick={this.dropZoneModal}> Add Files </button>
           </div>
         );
-      } else {
+      } else if(this.props.files){
       sideBar = (
         <div className = "sidebar-button-container">
-          <button className="side-button add-client-button" onClick={this.toggleNewFolder}>Add Client</button>
         </div>
       );
+    } else {
+      sideBar = (
+        <div className = "sidebar-button-container">
+        <button className="side-button add-client-button" onClick={this.toggleNewFolder}>Add Client</button>
+        </div>
+      )
     }
   }
     return(

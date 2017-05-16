@@ -90,7 +90,7 @@ if(store.folders.get(this.props.params.id) !== undefined) {
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
     }
-    
+
     let subFolderContainer;
 
     if(this.state.folder === undefined) {
@@ -117,7 +117,7 @@ if(store.folders.get(this.props.params.id) !== undefined) {
           <div className="main primary-container">
             <div className="modal-background"/>
             <div className="modal-container">
-              <DropzoneModal files={this.state.files} folder={this.state.folder} session={this.state.session} dropzoneFiles={this.state.dropzoneFiles}/>
+              <DropzoneModal files={this.state.files} folder={this.state.folder} client={this.state.client} session={this.state.session} dropzoneFiles={this.state.dropzoneFiles}/>
             </div>
             <h2> {this.state.folder.folderName} </h2>
             <SubFolderFiles folder={this.state.folder} session={this.state.session}/>

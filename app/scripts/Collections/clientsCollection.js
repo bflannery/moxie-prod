@@ -22,12 +22,13 @@ export default Backbone.Collection.extend({
       type: 'GET',
       url: 'https://api.backendless.com/v1/data/Clients',
       success: (clients) => {
-        return clients.data.filter((client, i ,arr)=>{
+        return clients.data.map((client, i ,arr)=>{
           console.log(client);
             if(client.clientName === company) {
-              this.trigger('change');
+              console.log(client.clientName)
               browserHistory.push('/clients/' + client.objectId);
-            } 
+            this.trigger('change');
+            }
         });
       },
       error: () => {

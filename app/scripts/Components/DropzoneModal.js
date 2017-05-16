@@ -70,9 +70,11 @@ export default React.createClass({
 
         let file = this.state.dropzoneFiles[0];
         let fileName = this.state.dropzoneFiles[0].name;
+        let folderId = this.props.folder.objectId;
+        let folderName = this.props.folder.folderName
         let clientId = this.props.client.objectId;
         let clientName = this.props.client.clientName;
-        store.fileStore.uploadFile(file, fileName, clientId, clientName);
+        store.fileStore.uploadSubFile(file, fileName, folderId, folderName, clientId, clientName);
         store.session.set({addFileModal: false});
 
       } else {

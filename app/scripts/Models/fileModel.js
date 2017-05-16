@@ -52,7 +52,7 @@ export default Backbone.Model.extend({
     }
   },
 
-  addSubFileToData(fileURL, fileName, folderId, folderName, clientId) {
+  addSubFileToData(fileURL, fileName, folderId, folderName, clientId, clientName) {
     $.ajax({
       type: 'POST',
       url: 'https://api.backendless.com/v1/data/Files',
@@ -62,7 +62,8 @@ export default Backbone.Model.extend({
         fileName,
         folderId,
         folderName,
-        clientId
+        clientId,
+        clientName,
       }),
       success: (response) => {
         console.log('subFile data success');

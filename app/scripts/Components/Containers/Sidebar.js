@@ -46,6 +46,7 @@ export default React.createClass({
       } else if(this.props.files){
       sideBar = (
         <div className = "sidebar-button-container">
+        <button className="side-button back-button" onClick={this.goBack}>Back</button>
         </div>
       );
     } else {

@@ -10,7 +10,7 @@ export default React.createClass({
     return (
         <li className = "nav-client-folder">
           <Link to={`/folders/${this.props.clientFolder.folders.objectId}`} onClick={this.reloadWindow} className="nav-client-folder-link">
-            <i className="fa fa-folder navBar-icon" aria-hidden="true"></i><span> {this.props.clientFolder.folders.folderName} </span>
+            <i className="fa fa-folder navbar-icon" aria-hidden="true"></i><span> {this.props.clientFolder.folders.folderName} </span>
           </Link>
       </li>
       );

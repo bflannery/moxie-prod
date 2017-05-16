@@ -10,7 +10,7 @@ export default React.createClass({
   render() {
     return (
       <div className="headerNav-container">
-        <SearchBar />
+        <SearchBar client={this.props.client} session={this.props.session}/>
         <Logout />
       </div>
     );

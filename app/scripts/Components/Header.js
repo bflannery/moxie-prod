@@ -13,7 +13,7 @@ export default React.createClass({
         <div className="header-logo-container">
          <img src="../../assets/images/wemoxie_logo.png" height="125px" width="150px"/>
         </div>
-        <HeaderNav session={this.props.session} />
+        <HeaderNav session={this.props.session} client={this.props.client} />
       </div>
     );
   }

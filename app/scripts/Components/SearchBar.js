@@ -6,6 +6,7 @@ export default React.createClass({
 
 
   render() {
+    console.log(this.props);
     return (
 
         <form className="searchBar-form" onSubmit={this.searchFiles}>
@@ -19,8 +20,11 @@ export default React.createClass({
   searchFiles(e) {
     e.preventDefault();
     let searchFile = this.refs.searchFile.value
-    browserHistory.push(`/files/search/${searchFile}`)
+    let client = this.props.client.objectId
     sessionStorage.searchTerm = searchFile;
+    sessionStorage.client = client;
+    browserHistory.push(`/files/search/${searchFile}`)
+
   }
 
 

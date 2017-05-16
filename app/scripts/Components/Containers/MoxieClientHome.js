@@ -121,7 +121,7 @@ export default React.createClass({
 
       return (
         <div className="client-file-page">
-          <Header session={this.state.session}/>
+          <Header session={this.state.session} client={this.state.client}/>
           <div className="main-container">
           {clientContainer}
           <NavSideBar session={this.state.session} client={this.state.client}/>

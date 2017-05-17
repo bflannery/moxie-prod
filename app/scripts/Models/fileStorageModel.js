@@ -150,7 +150,7 @@ export default Backbone.Model.extend({
 
 
 
-          uploadSubFile(file, fileName, folderId, folderName, clientId) {
+          uploadSubFile(file, fileName, folderId, folderName, clientId, clientName) {
             let fd = new FormData();
             fd.append('upload', file);
             $.ajax({
@@ -162,7 +162,7 @@ export default Backbone.Model.extend({
                 success: (response) => {
                     console.log('success on files storage to subFolder...');
                     response = JSON.parse(response);
-                    store.file.addSubFileToData(response.fileURL, fileName, folderId, folderName, clientId);
+                    store.file.addSubFileToData(response.fileURL, fileName, folderId, folderName, clientId, clientName);
                 },
                 error: (response) => {
                     if (response.responseText === '{"code":6003,"message":"Unable to upload the file: file already exists"}') {

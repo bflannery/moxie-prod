@@ -1,3 +1,4 @@
+
 .navSideBar-links-container {
   display: flex;
   justify-content: space-between;
@@ -5,7 +6,7 @@
 }
 
 .nav-client-folder {
-text-align: center;
+text-align: left;
 padding: 1rem;
 border-radius: 5px;
 color: white;
@@ -18,14 +19,14 @@ margin: 2rem 1rem;
 .nav-client-folder:hover{
   background-color: $primary-logo-lightblue;
     .nav-client-folder-link {
-        color: $primary-yellow;
+        color: white;
       }
 }
 
 
 
 .navSideBar-folders-container {
-  text-align: center;
+  text-align: left;
     h5 {
       display: none;
     }
@@ -50,16 +51,20 @@ margin: 2rem 1rem;
 
 .navSideBar-links:hover {
   background: $primary-logo-lightblue;
-  color: $primary-yellow;
+  color: white;
   border-radius: 10px;
 }
 
 @media (min-width: 750px) {
-  .navbar-icon {
+  .sidebar-1 {
+    overflow: scroll;
+  }
 
+  .navbar-icon {
     display:block;
-    font-size: 3.2rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
+    margin-right: 1rem;
   }
 
   .navSideBar-links-container {

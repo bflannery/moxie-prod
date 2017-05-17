@@ -7,24 +7,38 @@ export default React.createClass({
 
   render() {
     let sideBar;
+
     if(this.props.session.auth === false) {
-      if(this.props.folder) {
+      if(this.props.clientId) {
+       sideBar= (
+         <div className = "sidebar-button-container">
+         <button className="side-button all-files-button" onClick={this.allFiles}>All Files</button>
+       </div>
+     );
+   } else if(this.props.folder) {
         sideBar = (
         <div className = "sidebar-button-container">
           <button className="side-button back-button" onClick={this.goBack}>Back</button>
+          <button className="side-button all-files-button" onClick={this.allFiles}>All Files</button>
         </div>
         );
-      } else {
+      }  else if(this.props.files){
+      sideBar = (
+        <div className = "sidebar-button-container">
+        <button className="side-button back-button" onClick={this.goBack}>Back</button>
+        </div>
+      );
+    } else {
         sideBar = <div />;
       }
-    } else {
-      if(this.props.clientId) {
-        sideBar = (
-          <div className = "sidebar-button-container">
-                    <button className="side-button back-button" onClick={this.goBack}>Back</button>
-          <button className="side-button add-client-button" onClick={this.toggleNewFolder}>Add Folder</button>
-          <button className="side-button add-image-button" onClick={this.imageModal}> Add Client Logo </button>
 
+    } else if(this.props.session.auth === true){
+        if(this.props.clientId) {
+          sideBar = (
+          <div className = "sidebar-button-container">
+            <button className="side-button back-button" onClick={this.goBack}>Back</button>
+            <button className="side-button add-client-button" onClick={this.toggleNewFolder}>Add Folder</button>
+            <button className="side-button add-image-button" onClick={this.imageModal}> Add Client Logo </button>
           </div>
         );
       } else if (this.props.folder){
@@ -34,12 +48,18 @@ export default React.createClass({
           <button className="side-button add-file-button" onClick={this.dropZoneModal}> Add Files </button>
           </div>
         );
-      } else {
+      } else if(this.props.files){
       sideBar = (
         <div className = "sidebar-button-container">
-          <button className="side-button add-client-button" onClick={this.toggleNewFolder}>Add Client</button>
+        <button className="side-button back-button" onClick={this.goBack}>Back</button>
         </div>
       );
+    } else {
+      sideBar = (
+        <div className = "sidebar-button-container">
+        <button className="side-button add-client-button" onClick={this.toggleNewFolder}>Add Client</button>
+        </div>
+      )
     }
   }
     return(
@@ -67,5 +87,13 @@ export default React.createClass({
 
   goBack(e){
     browserHistory.goBack();
+  },
+
+  allFiles(e) {
+    if(this.props.clientId) {
+    browserHistory.push('/client-files/' + this.props.clientId);
+  } else {
+    browserHistory.push('/client-files/' + this.props.folder.clientId);
+  }
   }
 });

@@ -13,15 +13,8 @@ export default React.createClass({
         <div className="header-logo-container">
          <img src="../../assets/images/wemoxie_logo.png" height="125px" width="150px"/>
         </div>
-        <HeaderNav />
+        <HeaderNav session={this.props.session} client={this.props.client} />
       </div>
     );
-  },
-
-  resetState() {
-    store.client.set({addFolder: false});
-    store.client.set({addFileModal: false});
-    store.session.set({addFolder: false});
-    store.session.set({addFileModal: false});
   }
 });

@@ -18,9 +18,18 @@ export default React.createClass({
 
   searchFiles(e) {
     e.preventDefault();
-    let searchFile = this.refs.searchFile.value
-    store.files.searchFiles(searchFile);
-    console.log(searchFile);
+    if(!this.props.client) {
+      let searchFile = this.refs.searchFile.value.toLowerCase();
+      console.log(searchFile);
+      browserHistory.push(`/files/search/${searchFile}`)
+    } else {
+      let searchFile = this.refs.searchFile.value.toLowerCase();
+      let client = this.props.client.objectId
+      sessionStorage.searchTerm = searchFile;
+      sessionStorage.client = client;
+      browserHistory.push(`/files/search/${searchFile}`)
+  }
+
   }
 
 

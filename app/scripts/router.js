@@ -11,8 +11,9 @@ import ForgotPassword from './Components/ForgotPassword';
 import MoxieHome from './Components/Containers/MoxieHome';
 import MoxieClientHome from './Components/Containers/MoxieClientHome';
 import SubFolderPage from './Components/Containers/SubFolderPage';
-
+import ClientFilesPage from './Components/Containers/ClientFilesPage';
 import FilesPage from './Components/Containers/FilesPage';
+import ResultsPage from './Components/Containers/ResultsPage';
 import Recent from './Components/Containers/Recent';
 import Trash from './Components/Containers/Trash';
 
@@ -28,6 +29,8 @@ const router = (
        <Route path='/folders/:id' component = {SubFolderPage}/>
        <Route path='/forgotpassword' component={ForgotPassword}/>
        <Route path='/files' component = {FilesPage}/>
+       <Route path="/files/search/:search" component={ResultsPage} />
+       <Route path='/client-files/:id' component = {ClientFilesPage}/>
        <Route path='/recent' component = {Recent}/>
        <Route path='/trash' component = {Trash} />
     </Route>

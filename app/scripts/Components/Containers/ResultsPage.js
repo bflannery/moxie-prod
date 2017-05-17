@@ -3,7 +3,6 @@ import {browserHistory} from 'react-router';
 import { Link } from 'react-router';
 
 import store from '../../store';
-import Client from '../../Models/clientModel';
 import ClientFiles from '../ClientFiles';
 import SearchFiles from '../SearchFiles';
 
@@ -54,11 +53,13 @@ export default React.createClass({
   },
 
   updateState() {
+    if(this.state.session.auth === false) {
     if(store.clients.get(sessionStorage.client) !== undefined) {
     this.setState({
       client: store.clients.get(sessionStorage.client).toJSON()
     });
   }
+}
     this.setState({
       session: store.session.toJSON(),
       clients: store.clients.toJSON(),
@@ -68,15 +69,13 @@ export default React.createClass({
 
 
       render() {
-        console.log(this.state);
-        console.log(this.props);
         return (
           <div className="client-files-page">
             <Header session={this.state.session} client={this.state.client}/>
             <div className="main-container">
               <div className="main primary-container">
-               <h2> Search Results </h2>
-                <SearchFiles searchTerm={this.props.params.search} files={this.state.files} clientId={this.state.client.objectId}/>
+               <h2> Search Results: {this.props.params.search}</h2>
+                <SearchFiles searchTerm={this.props.params.search} files={this.state.files} clientId={this.state.client.objectId} session={this.state.session}/>
                 </div>
                 <NavSideBar session={this.state.session} client={this.state.client}/>
                 <Sidebar session={this.state.session} files={this.state.files}/>

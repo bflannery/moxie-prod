@@ -73,7 +73,7 @@ export default React.createClass({
     return (
 
       <div className="moxie-home">
-        <Header/>
+        <Header session={this.state.session}/>
         <div className="main-container">
         {newClientFormState}
         <NavSideBar session={this.state.session} />

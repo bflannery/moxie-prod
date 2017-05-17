@@ -6,7 +6,6 @@ export default React.createClass({
 
 
   render() {
-    console.log(this.props);
     let sideBar;
 
     if(this.props.session.auth === false) {
@@ -23,7 +22,13 @@ export default React.createClass({
           <button className="side-button all-files-button" onClick={this.allFiles}>All Files</button>
         </div>
         );
-      } else {
+      }  else if(this.props.files){
+      sideBar = (
+        <div className = "sidebar-button-container">
+        <button className="side-button back-button" onClick={this.goBack}>Back</button>
+        </div>
+      );
+    } else {
         sideBar = <div />;
       }
 

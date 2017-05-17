@@ -3,19 +3,32 @@ import SearchFile from './SearchFile';
 
 export default React.createClass({
   render() {
-    console.log(this.props);
     let clientFiles;
+
     if(!this.props.files) {
       clientFiles = <div />
     } else {
+      if(!this.props.clientId) {
+        clientFiles = this.props.files.map((file,i,arr)=> {
+          let fileName = file.fileName.toLowerCase();
+          console.log(fileName)
+          if(fileName.includes(this.props.searchTerm)) {
+            return <SearchFile key={i} file={file} />
+          }
+        });
+      } else {
       clientFiles = this.props.files.map((file , i, arr)=> {
+        let fileName = file.fileName.toLowerCase();
+
         if(file.clientId === this.props.clientId) {
-          if(file.fileName === this.props.searchTerm + '.pdf') {
-              return <SearchFile key={i} file={file}/>
+          if(fileName.includes(this.props.searchTerm)) {
+              return <SearchFile key={i} file={file} clientId={this.props.clientId}/>
             }
           }
         });
       }
+    }
+
     return (
       <ul className="secondary-container">
       {clientFiles}

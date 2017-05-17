@@ -7,8 +7,8 @@ import store from '../store';
 export default Backbone.Model.extend({
 
 initialize() {
-  if (window.localStorage['user-token']) {
-			this.set({
+  if (window.localStorage.getItem('user-token')) {
+			this.setItem({
         'user-token': window.localStorage['user-token'],
         'company': window.localStorage.company,
         'email' : window.localStorage.email

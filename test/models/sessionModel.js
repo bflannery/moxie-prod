@@ -12,7 +12,7 @@ describe('sessionModel', () => {
 
 	// make sure each time we run a test the instance is a fresh model
 	beforeEach(() => {
-    sessionModel.prototype.initialize = () => {
+    SessionModel.prototype.initialize = () => {
     };
     sessionModel = new SessionModel();
 	});

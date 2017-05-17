@@ -1,8 +1,7 @@
 // The imports below will handle chai-enzyme testing
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import jsdom from 'jsdom';
-import _$ from 'jquery';
+// import jsdom from 'jsdom';
 
 // expect is imported for standard testing
 // import { expect } from 'chai';
@@ -16,18 +15,20 @@ import _$ from 'jquery';
 //chaiEnzynme is invoked to fulfill final install of the chai-enzyme lib
 chai.use(chaiEnzyme());
 
-let global = {};
 
 
-global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
- global.window = global.document.defaultView;
-Object.keys(global.document.defaultView).forEach((property) => {
+var LocalStorage = require('node-localstorage').LocalStorage;
+require('babel-register')();
+const jsdom = require('jsdom').jsdom;
+const exposedProperties = ['window', 'navigator', 'document']; global.document = jsdom('');
+global.window = document.defaultView;
+Object.keys(document.defaultView).forEach(property => {
   if (typeof global[property] === 'undefined') {
-    global[property] = global.document.defaultView[property];
+    exposedProperties.push(property);
+    global[property] = document.defaultView[property];
   }
-   const $ = _$(global.window);
 });
-
-global.navigator = {
-  userAgent: 'node.js'
+global.navigator = { userAgent: 'node.js' };
+global.window.localStorage = {
+  'user-token': 'test'
 };

@@ -2,7 +2,7 @@
 Branded File Sharing Portal for local Austin company.
 
 
-#Client Requirements
+# Client Requirements
   - Client wanted an easy to use file sharing portal to share with their clients.
   - Needs to upload customized documents to specific folders for clients to easily navigate through
   - Needs to be able to Add / Remove / Edit files
@@ -13,7 +13,7 @@ Branded File Sharing Portal for local Austin company.
   - Clients can only see their files and not other clients
   - Clients should be able to navigate quickly through the UI/UX
 
-  
+
 # Under The Hood
   - HTML5
   - CSS3

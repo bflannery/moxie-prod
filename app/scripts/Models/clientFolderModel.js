@@ -8,6 +8,22 @@ export default Backbone.Model.extend({
   idAttribute: 'objectId',
 
 
+  // ----------------------------
+  // deleteClientFolder()
+  // takes a client parameter
+  // If clientFolders > 0 loop
+    //ForEach file in clientFolder, delete them
+    // Success: () =>
+        //call deleteClient(client) on client Model
+        //pass client as parameter
+    // Error: () =>
+        //Log Errorr
+  // Else clientFolders === 0
+        //call deleteClient(client) on client Model
+        //pass client as parameter
+  // ----------------------------
+
+
   deleteClientFolder(client) {
   console.log(client);
   if(client.clientFolders.length > 0) {
@@ -16,17 +32,22 @@ export default Backbone.Model.extend({
       type: 'DELETE',
       url: `https://api.backendless.com/v1/data/ClientFolders/${clientFolder.objectId}`,
       success: (response) => {
-        console.log('file deleted, response: ' , response);
+        console.log('file deleted from ClientFolders');
         store.client.deleteClient(client);
       },
       error: (xhr)=>{
         console.log('file delete error: ', xhr);
-      }
+        }
+      });
     });
-  });
-} else {
+  } else {
   console.log('no clientFolders, calling deleteClient');
   store.clients.get(client.objectId).deleteClient(client);
 }
 }
   });
+
+
+
+    // ----------------------------
+    // ----------------------------

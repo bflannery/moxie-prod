@@ -1,6 +1,19 @@
 # Moxie
 Branded File Sharing Portal for local Austin company.
 
+
+#Client Requirements
+  - Client wanted an easy to use file sharing portal to share with their clients.
+  - Needs to upload customized documents to specific folders for clients to easily navigate through
+  - Needs to be able to Add / Remove / Edit files
+  - Needs A Secure Portal for Client Login/Logout
+  - Needs to be easy to scale as they add more clients
+  - Needs to have the look and feel of their company's style
+  - Clients should be able to view and download files ONLY
+  - Clients can only see their files and not other clients
+  - Clients should be able to navigate quickly through the UI/UX
+
+  
 # Under The Hood
   - HTML5
   - CSS3
@@ -32,5 +45,6 @@ Branded File Sharing Portal for local Austin company.
   - Company / Client display and interaction
   - Dropzone for uploading and previewing PDF Files
   - Add / Display Client's
-  - Company File Editing
+  - Company File Add/Delete/Edit
   - Client view and download PDF
+  - Search Files

@@ -14,80 +14,40 @@ export default Backbone.Model.extend({
   },
 
   // ----------------------------
+  // addSubFileToData()
   // Add File To All Files Table
+  // Takes fileURL, fileName, folderId, folderName, clientId, clientName as parameters
+        // Create a new object on the Files Collection
+            // Success: (response) =>
+                // Log file created
+                // parse response to JSON();
+                // Call addFileToClientFiles on current Client Model
+                  // Takes fileId, folderName, folderId as parameters
+            // Error: (xhr) =>
+                  // Log file Not created
+      // Else clientId === false
+          //
   // On Success, call AddFileToClientFiles on Clients Collections
   // Trigger Change on File Model
   // ----------------------------
 
-  addFileToData(fileURL, fileName, folderName) {
-    console.log(clientId);
-    if (clientId) {
-      store.files.create({
-        fileName: fileName,
-        fileURL: fileURL,
-        folderName: folderName
-      }, {
-        success: (response) => {
-          console.log('file created');
-          console.log(response);
-          store.clients.get(clientId).addFileToClientFiles(response.id, folderName);
-
-        }
-      });
-
-    } else {
-      $.ajax({
-        type: 'POST',
-        url: 'https://api.backendless.com/v1/data/Files',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          fileUrl,
-          fileName,
-        }),
-        success: (response) => {
-          console.log('on file to data success without clientId...');
-
-        }
-      });
-    }
-  },
-
   addSubFileToData(fileURL, fileName, folderId, folderName, clientId, clientName) {
-    $.ajax({
-      type: 'POST',
-      url: 'https://api.backendless.com/v1/data/Files',
-      contentType: 'application/json',
-      data: JSON.stringify({
+    store.files.create({
         fileURL,
         fileName,
         folderId,
         folderName,
         clientId,
         clientName,
-      }),
+      }, {
       success: (response) => {
-        console.log('subFile data success');
-        let subFolder = store.folders.get(response.folderId);
-        store.folders.get(response.folderId).addFileToSubFolder(response.objectId, fileURL, fileName, folderName, folderId, clientId);
-
-      }
-    });
-  },
-
-
-  // ----------------------------
-  // Delete File From Data Files Table
-  // On Success, call deleteFileFromClients on Clients Collections
-  // ----------------------------
-
-
-  deleteFileFromDataTable(objectId, clientId, clientFileId) {
-    $.ajax({
-      type: 'DELETE',
-      url: `https://api.backendless.com/v1/data/Files/${objectId}`,
-      success: () => {
-        console.log('deleted File From Table');
-        store.clients.get(clientId).deleteFileFromClient(clientFileId);
+        console.log('subFile saved to Files');
+        response = response.toJSON();
+        let fileId = response.objectId;
+        store.folders.get(response.folderId).addFileToSubFolder(fileId, folderName, folderId);
+      },
+      error: (xhr) => {
+        console.log('subFile NOT saved to Files', xhr);
       }
     });
   },
@@ -178,6 +138,9 @@ export default Backbone.Model.extend({
 
 
 
+  // ----------------------------
+  // ----------------------------
+
   deleteSubFolderFiles(clientFolder) {
     console.log(clientFolder);
     if(!clientFolder.folders.folderFiles || clientFolder.folders.folderFiles.length === 0) {
@@ -246,6 +209,18 @@ export default Backbone.Model.extend({
     }
   },
 
+
+
+  // ----------------------------
+  // deleteFolderFile()
+  // Delete File from Files
+        // Success: () =>
+            // Log file deleted from Files
+        // Error: () =>
+          // Log file NOT deleted from Files
+  // ----------------------------
+
+
   deleteFolderFile(folderFile) {
     console.log(folderFile);
     $.ajax({
@@ -265,3 +240,9 @@ export default Backbone.Model.extend({
 
   }
 });
+
+
+
+
+    // ----------------------------
+    // ----------------------------

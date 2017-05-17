@@ -30,9 +30,6 @@ export default React.createClass({
     );
   },
 
-// addClient
-    // Create a new client through Clients Collection
-    // Set addFolder: false through Session model
 
   addFolder(e) {
     e.preventDefault();

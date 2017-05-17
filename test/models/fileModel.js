@@ -25,19 +25,19 @@ describe('fileModel', () => {
 		expect(fileModel.idAttribute).to.equal('objectId');
 	});
 
-  it('should have default object with attributes of name and description', () => {
+  it('should have default object with attributes of fileName', () => {
     expect(fileModel).to.have.property('defaults');
-    expect(fileModel.defaults).to.deep.equal({name: '' , description: ''});
+    expect(fileModel.defaults).to.deep.equal({fileName: ''});
   });
 
-  it('should have an addFile method', () => {
-    expect(fileModel).to.have.property('addFile');
-    expect(fileModel.addFile).to.be.a('function');
+  it('should have an addSubFileToData method', () => {
+    expect(fileModel).to.have.property('addSubFileToData');
+    expect(fileModel.addSubFileToData).to.be.a('function');
   });
 
-  it('should have a deleteFile method', () => {
-    expect(fileModel).to.have.property('deleteFile');
-    expect(fileModel.deleteFile).to.be.a('function');
+  it('should have a deleteClientFilesFromFiles method', () => {
+    expect(fileModel).to.have.property('deleteClientFilesFromFiles');
+    expect(fileModel.deleteClientFilesFromFiles).to.be.a('function');
   });
 
 });

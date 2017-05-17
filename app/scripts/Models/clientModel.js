@@ -16,6 +16,7 @@ export default Backbone.Model.extend({
 
 
     // ----------------------------
+    // addFileToClientFiles()
     // Add File To ClientFiles Data Table
     // Take fileId and folderName as parameters
     // Save clientFiles object on clientFiles table
@@ -27,7 +28,6 @@ export default Backbone.Model.extend({
     // Trigger Update To Client for ClientHome render
     // Push to ClientHome
     // ----------------------------
-
 
     addFileToClientFiles(fileId, folderName) {
         this.save({
@@ -53,6 +53,7 @@ export default Backbone.Model.extend({
 
 
     // ----------------------------
+    // addFolderToClientFolders()
     // All Folder To ClientFolders Data Table
     // Takes subFolderId, folderName, clientId as parameters
     // Save clientFolders object on clienFolders table
@@ -72,7 +73,6 @@ export default Backbone.Model.extend({
     // ----------------------------
 
     addFolderToClientFolders(subFolderId, folderName, clientId) {
-      console.log(clientId);
       let clientFolders;
       if(this.get('clientFolders')) {
           clientFolders = this.get('clientFolders').concat([
@@ -117,7 +117,10 @@ export default Backbone.Model.extend({
         });
     },
 
+
+
     // ----------------------------
+    // deleteFileFromClient()
     // Delete File From ClientFiles Data Table
     // Takes clientFileId as a parameter
     // Filer clientFiles and save to newClientFiles[]
@@ -133,7 +136,6 @@ export default Backbone.Model.extend({
             // Error: () =>
     // ----------------------------
 
-
     deleteFileFromClient(clientFileId) {
         let newClientFiles = this.get('clientFiles').filter((clientFile, i, arr) => {
             if (clientFileId !== clientFile.objectId) {
@@ -148,7 +150,7 @@ export default Backbone.Model.extend({
                     type: 'DELETE',
                     url: `https://api.backendless.com/v1/data/ClientFiles/${clientFileId}`,
                     success: () => {
-                        console.log('clientFile deleted from ClientFiles')
+                        console.log('clientFile deleted from ClientFiles');
                     },
                     error: (xhr) => {
                         console.log('clientFile not deleted from ClientFiles', xhr);
@@ -158,7 +160,10 @@ export default Backbone.Model.extend({
         });
     },
 
+
+
     // ----------------------------
+    // deleteFolderFromClient()
     // Delete Folder From ClientFolders Data Table
     // Takes clientFolderId as a parameter
     // Filer clientFolders and save to newClientFolders[]
@@ -173,9 +178,6 @@ export default Backbone.Model.extend({
                             // Log clientFolder NOT deleted from ClientFolders table
             // Error: () =>
     // ----------------------------
-
-
-
 
     deleteFolderFromClient(clientFolderId) {
         let newClientFolders = this.get('clientFolders').filter((clientFolder, i, arr) => {
@@ -204,6 +206,7 @@ export default Backbone.Model.extend({
 
 
     // ----------------------------
+    // deleteClient()
     // Delete Client From Clients Table
     // Takes a client parameter
     // Deletes client from Clients table
@@ -215,7 +218,6 @@ export default Backbone.Model.extend({
     // ----------------------------
 
     deleteClient(client) {
-      console.log(client);
       this.destroy({url: `https://api.backendless.com/v1/data/Clients/${client.objectId}`},
         {
             success: () => {
@@ -227,31 +229,29 @@ export default Backbone.Model.extend({
         });
     },
 
+    
 
     // ----------------------------
-    // getItems()
-    // declare an items [] named allItems
-    //
+    // addClientLogo()
+    // Takes a fileUrl as a parameter
+    // Save photo and update Client
+        // Success: () =>
+          // Log client logo saved
+        // Error: () =>
+          // Log client logo not saved
     // ----------------------------
 
-    getItems() {
-      let allItems = [];
-      let files = this.attributes.clientFiles.map((clientFile, i, arr)=>{
-          allItems.concat(clientFile);
-          return true;
-      });
-      console.log(allItems);
-    },
+    addClientLogo(fileUrl){
+      this.save({pic: fileUrl}, {type: 'PUT'},
+      {
+        success: () => {
+          console.log('Client logo Saved');
+      },
+        error: (xhr)=> {
+          console.log('Client logo not Saved' , xhr);
+      }
+    });
 
-
-    // ----------------------------
-    // ----------------------------
-
-    addPhoto(fileUrl){
-      console.log(this);
-      console.log(fileUrl);
-      this.save({pic: fileUrl}, {type: 'PUT'});
-      this.set({addPhotoModal: false});
     }
 });
 

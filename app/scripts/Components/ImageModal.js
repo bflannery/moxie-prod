@@ -16,7 +16,6 @@ export default React.createClass({
   },
 
     render() {
-      console.log(this.props);
       let dropzoneFiles = (
               <div className="files-container">
                 <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop} id="dropzone"/>
@@ -83,7 +82,7 @@ export default React.createClass({
       success: (response)=>{
         response = JSON.parse(response);
         console.log(response.fileURL);
-        store.clients.get(this.props.client.objectId).addPhoto(response.fileURL);
+        store.clients.get(this.props.client.objectId).addClientLogo(response.fileURL);
         store.session.set({addPhotoModal: false});
       }
     })

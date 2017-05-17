@@ -20,7 +20,6 @@ export default React.createClass({
     e.preventDefault();
     if(!this.props.client) {
       let searchFile = this.refs.searchFile.value.toLowerCase();
-      console.log(searchFile);
       browserHistory.push(`/files/search/${searchFile}`)
     } else {
       let searchFile = this.refs.searchFile.value.toLowerCase();

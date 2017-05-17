@@ -12,7 +12,7 @@ describe('sessionModel', () => {
 
 	// make sure each time we run a test the instance is a fresh model
 	beforeEach(() => {
-    sessionModel.prototype.initialize = () => {
+    SessionModel.prototype.initialize = () => {
     };
     sessionModel = new SessionModel();
 	});
@@ -30,8 +30,14 @@ describe('sessionModel', () => {
 		expect(sessionModel.idAttribute).to.equal('objectId');
 	});
 
-  it('should have default object with attributes of name and description', () => {
+  it('should have default object with attributes of auth, passwordReset, addFileModal, addFolder, addPhotoModal, email, company', () => {
     expect(sessionModel).to.have.property('defaults');
-    expect(sessionModel.defaults).to.deep.equal({auth: false, passwordReset: null});
+    expect(sessionModel.defaults).to.deep.equal({  auth: false,
+	    passwordReset: null,
+	    addFileModal: false,
+	    addFolder: false,
+	    addPhotoModal: false,
+	    email: '',
+	    company: '',});
   });
 });

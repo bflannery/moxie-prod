@@ -31,8 +31,15 @@ initialize() {
     email: '',
     company: '',
   },
+
+
+
   // ----------------------------
+  // validatePassword()
   // Validate User Password
+  // Takes password, confirmPassword as parameters
+  // If the passwords match
+        // return true;
   // ----------------------------
 
   validatePassword(password, confirmPassword) {
@@ -40,9 +47,19 @@ initialize() {
       return false;
   },
 
+
+
 // ----------------------------
-//Register New User
-// On Success, call Login on Session
+// register()
+// Register New User
+// Takes email, password, company as parameters
+// Save new User Object
+      // Success: () =>
+          // Log User Registered
+          // Call login()
+          // Takes email and password as parameters
+      // Error: () =>
+          // Log User NOT Registered
 // ----------------------------
 
   register(email, password, company){
@@ -51,21 +68,33 @@ initialize() {
       url:'https://api.backendless.com/v1/users/register'
     })
     .done((response)=> {
-      console.log('when true: ', response);
+      console.log('User Registered');
       this.login(email, password);
     })
     .fail((xhr)=> {
-      console.log('error: ' , xhr);
+      console.log('User NOT Registered' , xhr);
     });
   },
 
+
+
 // ----------------------------
-//Log In Existing User
-// On Success, store user info in local storage
-// If Moxie user, set auth true
-    // push user to Moxie Home
-// If Moxie client, set auth false
-    // call getClients on Clients collection
+// login()
+// Log In Existing User
+// Takes login and password as parameters
+// Save login object with login, password
+    // Success: () =>
+        // Store response items on LocalStorage
+        // If Wemoxie Email
+            // Set auth === true
+            // Log Logging in as Super User
+            // Push browser to /home
+        // Else Other Email
+            // Set auth === false
+            // Log Logging in as Client
+            // Call getClients on Clients Collection
+    // Error: () =>
+        // Not Logged In
 // ----------------------------
 
   login(login, password){
@@ -73,30 +102,33 @@ initialize() {
       type: 'POST',
       url: 'https://api.backendless.com/v1/users/login'
     }).done((response)=> {
-      console.log(response);
-
-      localStorage.setItem('company', response.company);
+      window.localStorage.setItem('company', response.company);
       window.localStorage.setItem('user-token',response['user-token']);
-      window.localStorage.setItem('email',response.email);
       window.localStorage.setItem('ownerId',response.ownerId);
 
       if(response.email.toLowerCase().includes('wemoxie')) {
+          console.log('Logging in as Super User');
           this.set({auth: true});
-          console.log('logged in as moxie!');
           browserHistory.push('/home');
         } else {
           this.set({auth: false});
-          console.log('logged in as client!')
+          console.log('Logging in as Client');
           store.clients.getClients(response.company);
         }
       }).fail((xhr)=>{
-        console.log('login error: ' , xhr);
+        console.log('Not Logged In' , xhr);
       });
     },
 
 // ----------------------------
-//Log Out Current User
-// On Success, clear local Storage and push to Landing Page
+// logout()
+// Success: () =>
+      // Log Logged Out
+      // Clear all instances of Session
+      // Push Browser to LandingPage
+// Error: () =>
+      // Log Not Logged Out
+
 // ----------------------------
 
   logout(){
@@ -104,10 +136,14 @@ initialize() {
       contentType: 'application/json',
       url: 'https://api.backendless.com/v1/users/logout',
       success: ()=> {
-        console.log('logged out!');
+        console.log('Logged Out');
         this.clear();
         window.localStorage.clear();
+        window.sessionStorage.clear();
         browserHistory.push('/');
+      },
+      error: (xhr) => {
+        console.log('Not Logged Out', xhr);
       }
     });
   },
@@ -124,3 +160,8 @@ initialize() {
 //       });
 //     },
 });
+
+// ----------------------------
+// Success: () =>
+// Error: () =>
+// ----------------------------

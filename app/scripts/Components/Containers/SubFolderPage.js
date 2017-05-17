@@ -82,8 +82,6 @@ if(store.folders.get(this.props.params.id) !== undefined) {
   })
 },
   render() {
-    console.log(this.state);
-
     let styles = {
       height: "100px",
       backgroundImage: `url(${this.state.client.pic})`,

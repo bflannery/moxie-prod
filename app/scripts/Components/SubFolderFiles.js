@@ -3,7 +3,6 @@ import SubFolderFile from './SubFolderFile';
 
 export default React.createClass({
   render() {
-    console.log(this.props);
     let subFolderFiles;
 
     if(!this.props.folder.folderFiles || this.props.folder.folderFiles.length === 0) {

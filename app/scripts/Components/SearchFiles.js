@@ -11,7 +11,6 @@ export default React.createClass({
       if(!this.props.clientId) {
         clientFiles = this.props.files.map((file,i,arr)=> {
           let fileName = file.fileName.toLowerCase();
-          console.log(fileName)
           if(fileName.includes(this.props.searchTerm)) {
             return <SearchFile key={i} file={file} />
           }

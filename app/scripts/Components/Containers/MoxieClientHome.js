@@ -69,7 +69,6 @@ export default React.createClass({
 
 
   render() {
-
     let styles = {
       height: "100px",
       backgroundImage: `url(${this.state.client.pic})`,

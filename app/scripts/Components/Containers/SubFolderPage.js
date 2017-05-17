@@ -51,6 +51,12 @@ componentDidMount() {
   folder.fetch();
   folder.on('update change', this.updateState);
 
+  let client = store.clients.get(window.localStorage.clientId)
+
+  client.fetch();
+  client.on('update change', this.updateState);
+
+
 },
 
 componentWillUnmount() {
@@ -58,13 +64,14 @@ componentWillUnmount() {
   store.session.off('update change', this.updateState);
   store.clients.off('update change', this.updateState);
   store.folders.off('update change', this.updateState);
+  store.clients.get(window.localStorage.clientId).off('update change', this.updateState);
 },
 
 updateState() {
 
-if(store.clients.get(this.state.folder.clientId) !== undefined){
+if(store.clients.get(window.localStorage.clientId) !== undefined){
   this.setState({
-    client: store.clients.get(this.state.folder.clientId).toJSON()
+    client: store.clients.get(window.localStorage.clientId).toJSON()
   });
 }
 
@@ -82,6 +89,7 @@ if(store.folders.get(this.props.params.id) !== undefined) {
   })
 },
   render() {
+    console.log(this.state);
     let styles = {
       height: "100px",
       backgroundImage: `url(${this.state.client.pic})`,

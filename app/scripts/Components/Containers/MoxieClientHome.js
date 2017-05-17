@@ -40,10 +40,13 @@ export default React.createClass({
       let client = store.clients.get(this.props.params.id);
       if(!client) {
           client = new Client({objectId: this.props.params.id});
+          window.localStorage.setItem('clientId', this.props.params.id)
       }
 
       client.fetch();
       client.on('update change', this.updateState);
+
+
 
   },
 

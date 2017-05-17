@@ -25,14 +25,9 @@ describe('clientFolderModel', () => {
 		expect(clientFolderModel.idAttribute).to.equal('objectId');
 	});
 
-  it('should have default object with attributes of name and description', () => {
-    expect(clientFolderModel).to.have.property('defaults');
-    expect(clientFolderModel.defaults).to.deep.equal({name: '' , description: ''});
-  });
-
-  it('should have a deleteClient method', () => {
-    expect(clientFolderModel).to.have.property('deleteClient');
-    expect(clientFolderModel.deleteClient).to.be.a('function');
+  it('should have a deleteClientFolder method', () => {
+    expect(clientFolderModel).to.have.property('deleteClientFolder');
+    expect(clientFolderModel.deleteClientFolder).to.be.a('function');
   });
 
 });

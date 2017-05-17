@@ -3,6 +3,8 @@ import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // import jsdom from 'jsdom';
 
+var jsdom = require('jsdom');
+
 // expect is imported for standard testing
 // import { expect } from 'chai';
 
@@ -13,22 +15,21 @@ import chaiEnzyme from 'chai-enzyme';
 // import React from 'react';
 
 //chaiEnzynme is invoked to fulfill final install of the chai-enzyme lib
-chai.use(chaiEnzyme());
 
+var jsdom = require('jsdom').jsdom;
 
-
-var LocalStorage = require('node-localstorage').LocalStorage;
-require('babel-register')();
-const jsdom = require('jsdom').jsdom;
-const exposedProperties = ['window', 'navigator', 'document']; global.document = jsdom('');
+global.document = jsdom('');
 global.window = document.defaultView;
-Object.keys(document.defaultView).forEach(property => {
+Object.keys(document.defaultView).forEach((property) => {
   if (typeof global[property] === 'undefined') {
-    exposedProperties.push(property);
     global[property] = document.defaultView[property];
   }
 });
-global.navigator = { userAgent: 'node.js' };
+
+global.navigator = {
+  userAgent: 'node.js'
+};
+
 global.window.localStorage = {
-  'user-token': 'test'
+   'user-token': '123'
 };

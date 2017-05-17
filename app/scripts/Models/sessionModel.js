@@ -7,12 +7,7 @@ import store from '../store';
 export default Backbone.Model.extend({
 
 initialize() {
-  if (window.localStorage.getItem('user-token')) {
-			this.set({
-        'user-token': window.localStorage['user-token'],
-        'company': window.localStorage.company,
-        'email' : window.localStorage.email
-      });
+  if (window.localStorage['user-token']) {
       if(window.localStorage.company === 'wemoxie') {
         this.set({auth: true});
         }

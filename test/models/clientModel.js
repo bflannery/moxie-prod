@@ -25,9 +25,9 @@ describe('clientModel', () => {
 		expect(clientModel.idAttribute).to.equal('objectId');
 	});
 
-  it('should have default object with attributes of name and description', () => {
+  it('should have default object with attributes of clientName and folderURL', () => {
     expect(clientModel).to.have.property('defaults');
-    expect(clientModel.defaults).to.deep.equal({name: '' , description: ''});
+    expect(clientModel.defaults).to.deep.equal({clientName: '' , folderURL: ''});
   });
 
   it('should have a deleteClient method', () => {

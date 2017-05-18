@@ -1,9 +1,8 @@
 import React from 'react';
-import store from '../../store';
-
+import createReactClass from 'create-react-class';
 import Login from '../Login';
 
-export default React.createClass({
+export default class LandingPage extends React.Component {
   render() {
     return (
       <div className="landingPage-container">
@@ -11,4 +10,4 @@ export default React.createClass({
       </div>
     );
   }
-});
+};

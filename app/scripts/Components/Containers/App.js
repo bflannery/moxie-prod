@@ -1,9 +1,10 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {browserHistory} from 'react-router';
 import Header from '../Header';
 
 
-export default React.createClass({
+let App = createReactClass({
   render() {
     return (
       <div className="app-container">
@@ -15,3 +16,5 @@ export default React.createClass({
     );
   }
 });
+
+export default App;

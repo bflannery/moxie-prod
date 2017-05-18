@@ -1,7 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import ClientSingle from './ClientSingle';
-import MoxieFile from './MoxieFile';
 
 let ClientsList = createReactClass({
   render() {

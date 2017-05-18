@@ -1,10 +1,11 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {Link} from 'react-router';
 import store from '../store';
 import $ from 'jquery';
 
 
-export default React.createClass({
+let SubFolderFile = createReactClass({
   render() {
     let fileLink;
 
@@ -56,3 +57,5 @@ removeFile(e) {
   store.fileStore.deleteFileFromStorage(folderFile);
 }
 });
+
+export default SubFolderFile;

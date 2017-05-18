@@ -1,9 +1,10 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import store from '../store';
 import UploadFile from './UploadFile';
 
 
-export default React.createClass({
+let DropzoneFiles = createReactClass({
 
 render() {
       let uploadFiles;
@@ -23,3 +24,5 @@ render() {
 }
 
 });
+
+export default DropzoneFiles;

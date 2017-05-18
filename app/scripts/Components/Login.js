@@ -1,10 +1,11 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {Link} from 'react-router';
 import store from '../store';
 
 
 
-export default React.createClass({
+let Login = createReactClass({
   render(){
     return (
       <div className="login-container">
@@ -38,3 +39,5 @@ export default React.createClass({
   }
 
 });
+
+export default Login;

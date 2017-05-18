@@ -1,8 +1,9 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {browserHistory} from 'react-router';
 import store from '../store';
 
-export default React.createClass({
+let SearchBar = createReactClass({
 
 
   render() {
@@ -33,3 +34,5 @@ export default React.createClass({
 
 
   });
+
+export default SearchBar;

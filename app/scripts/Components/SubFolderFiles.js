@@ -1,7 +1,8 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import SubFolderFile from './SubFolderFile';
 
-export default React.createClass({
+let SubFolderFiles = createReactClass({
   render() {
     let subFolderFiles;
 
@@ -24,3 +25,5 @@ export default React.createClass({
     );
   }
 });
+
+export default SubFolderFiles;

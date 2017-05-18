@@ -1,9 +1,10 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import store from '../store';
 import { Link } from 'react-router';
 import {browserHistory} from 'react-router';
 
-export default React.createClass({
+let ClientSingle = createReactClass({
 
   render() {
     return (
@@ -33,3 +34,5 @@ export default React.createClass({
       store.fileStore.deleteClientFolder(client);
   }
 });
+
+export default ClientSingle;

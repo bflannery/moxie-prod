@@ -1,10 +1,11 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {Link} from 'react-router';
 import store from '../store';
 import $ from 'jquery';
 
 
-export default React.createClass({
+let ClientFolder = createReactClass({
 
   render() {
     if(this.props.session.auth === false) {
@@ -48,3 +49,5 @@ export default React.createClass({
       store.fileStore.deleteSubFolderFromStorage(clientFolder);
     }
   });
+
+  export default ClientFolder;

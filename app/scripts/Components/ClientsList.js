@@ -1,8 +1,9 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import ClientSingle from './ClientSingle';
 import MoxieFile from './MoxieFile';
 
-export default React.createClass({
+let ClientsList = createReactClass({
   render() {
 
     let clients;
@@ -28,3 +29,5 @@ export default React.createClass({
   );
   }
 });
+
+export default ClientsList;

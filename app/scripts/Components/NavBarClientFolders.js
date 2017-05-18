@@ -1,9 +1,10 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import NavBarClientFolder from './NavBarClientFolder';
 
 import store from '../store';
 
-export default React.createClass({
+let NavBarClientFolders = createReactClass({
   render() {
     console.log(this.props);
 
@@ -29,3 +30,5 @@ export default React.createClass({
     );
   }
 });
+
+export default NavBarClientFolders

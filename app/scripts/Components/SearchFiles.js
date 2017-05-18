@@ -1,7 +1,8 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import SearchFile from './SearchFile';
 
-export default React.createClass({
+let SearchFiles = createReactClass({
   render() {
     let clientFiles;
 
@@ -36,3 +37,5 @@ export default React.createClass({
   }
 
 });
+
+export default SearchFiles;

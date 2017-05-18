@@ -1,8 +1,9 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import store from '../store';
 
 
-export default React.createClass({
+let NewClientForm = createReactClass({
 
   render() {
     console.log(this.props);
@@ -46,3 +47,5 @@ export default React.createClass({
    }
   }
 });
+
+export default NewClientForm;

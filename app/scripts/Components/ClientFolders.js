@@ -1,9 +1,10 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import ClientFolder from './ClientFolder';
 
 import store from '../store';
 
-export default React.createClass({
+let ClientFolders = createReactClass({
   render() {
 
 
@@ -26,3 +27,5 @@ export default React.createClass({
     );
   }
 });
+
+export default ClientFolders;

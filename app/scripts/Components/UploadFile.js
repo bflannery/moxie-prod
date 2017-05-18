@@ -1,8 +1,9 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {Link} from 'react-router';
 import store from '../store';
 
-export default React.createClass({
+let UploadFile = createReactClass({
   render() {
 
       if(this.props.file.name) {
@@ -19,3 +20,5 @@ export default React.createClass({
   }
   }
 });
+
+export default UploadFile;

@@ -1,7 +1,8 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import ClientItem from './ClientItem';
 
-export default React.createClass({
+let ClientItems = createReactClass({
   render() {
   let allItems = [];
     let folders = this.props.client.clientFolders;
@@ -20,3 +21,5 @@ export default React.createClass({
   }
 
 });
+
+export default ClientItems;

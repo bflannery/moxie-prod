@@ -1,8 +1,9 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {Link} from 'react-router';
 import store from '../store';
 
-export default React.createClass({
+let RegisterPage = createReactClass({
   render() {
     return (
       <div className="register-container">
@@ -47,3 +48,5 @@ export default React.createClass({
   this.refs.confirmPassword.value = '';
 }
 });
+
+export default RegisterPage;

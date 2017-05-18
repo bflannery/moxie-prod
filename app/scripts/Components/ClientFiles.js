@@ -1,7 +1,8 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import ClientFile from './ClientFile';
 
-export default React.createClass({
+let ClientFiles = createReactClass({
   render() {
     let clientFiles;
     if(!this.props.files) {
@@ -21,3 +22,5 @@ export default React.createClass({
   }
 
 });
+
+export default ClientFiles;

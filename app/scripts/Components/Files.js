@@ -1,7 +1,8 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import FileSingle from './FileSingle';
 
-export default React.createClass({
+let Files = createReactClass({
   render() {
 
     let allFiles = this.props.files.map((file , i, arr)=> {
@@ -16,3 +17,5 @@ export default React.createClass({
   }
 
 });
+
+export default Files;

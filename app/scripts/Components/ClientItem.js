@@ -1,10 +1,11 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
 import store from '../store';
 import $ from 'jquery';
 
-export default React.createClass({
+let ClientItem = createReactClass({
   render() {
 
     let itemLink;
@@ -87,3 +88,5 @@ removeFolder(e) {
   store.fileStore.deleteFolderFromStorage(subFolderId, subFolderURL, clientId, clientFolderId);
 }
 });
+
+export default ClientItem;

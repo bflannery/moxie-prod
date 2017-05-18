@@ -1,8 +1,9 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import store from '../store';
 import {browserHistory} from 'react-router';
 
-export default React.createClass({
+let forgotPassword = createReactClass({
 
   getInitialState() {
     return {
@@ -56,3 +57,6 @@ export default React.createClass({
     browserHistory.push('/');
   }
 });
+
+
+export default forgotPassword;

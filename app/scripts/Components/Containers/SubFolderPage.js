@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {browserHistory} from 'react-router';
 import { Link } from 'react-router';
 
@@ -14,7 +15,7 @@ import Sidebar from './Sidebar';
 import NavSideBar from './NavSideBar';
 import NewClientForm from '../NewClientForm';
 
-export default React.createClass({
+let SubFolderPage = createReactClass({
 
 
   getInitialState() {
@@ -145,3 +146,5 @@ if(store.folders.get(this.props.params.id) !== undefined) {
     );
   }
 });
+
+export default SubFolderPage;

@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import Dropzone from 'react-dropzone';
 import store from '../store';
 import config from '../config';
@@ -7,7 +8,7 @@ import {browserHistory} from 'react-router';
 import Client from '../Models/clientModel';
 import Header from './Header';
 
-export default React.createClass({
+let ImageModal = createReactClass({
 
   getInitialState() {
     return {
@@ -92,3 +93,5 @@ export default React.createClass({
     store.session.set({addPhotoModal: false});
     }
   });
+
+export default ImageModal;

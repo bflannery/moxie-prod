@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {browserHistory} from 'react-router';
 import { Link } from 'react-router';
 
@@ -8,7 +9,7 @@ import Header from '../Header';
 import Sidebar from './Sidebar';
 import NavSideBar from './NavSideBar';
 
-export default React.createClass({
+let Recent = createReactClass({
 
     getInitialState() {
       return {
@@ -66,3 +67,5 @@ export default React.createClass({
     );
   }
 });
+
+export default Recent;

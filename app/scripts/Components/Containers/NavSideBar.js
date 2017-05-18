@@ -1,9 +1,10 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {browserHistory , Link} from 'react-router';
 import store from '../../store';
 import NavBarClientFolders from '../NavBarClientFolders';
 
-export default React.createClass({
+let NavSideBar = createReactClass({
   render() {
     console.log(this.props);
     let navBar;
@@ -49,6 +50,7 @@ export default React.createClass({
   }
 });
 
+export default NavSideBar;
 
 
 

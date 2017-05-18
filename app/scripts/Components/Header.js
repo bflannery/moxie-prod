@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {browserHistory, Link} from 'react-router';
 import SearchBar from './SearchBar';
 import Logout from './Logout';
@@ -6,7 +7,7 @@ import store from '../store';
 import HeaderNav from './HeaderNav';
 
 
-export default React.createClass({
+let Header = createReactClass({
   render() {
     return (
       <div className="header">
@@ -18,3 +19,5 @@ export default React.createClass({
     );
   }
 });
+
+export default Header;

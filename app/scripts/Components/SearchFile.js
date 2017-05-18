@@ -1,10 +1,11 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {Link} from 'react-router';
 import store from '../store';
 import $ from 'jquery';
 
 
-export default React.createClass({
+let SearchFile = createReactClass({
   render() {
     let fileLink;
 
@@ -55,3 +56,5 @@ if(this.props.clientId) {
 
 }
 });
+
+export default SearchFile;

@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {browserHistory} from 'react-router';
 import { Link } from 'react-router';
 
@@ -13,7 +14,7 @@ import NavSideBar from './NavSideBar';
 import NewClientForm from '../NewClientForm';
 import ImageModal from '../ImageModal';
 
-export default React.createClass({
+let MoxieClientHome = createReactClass({
 
 
   getInitialState() {
@@ -133,3 +134,5 @@ export default React.createClass({
        );
      }
 });
+
+export default MoxieClientHome;

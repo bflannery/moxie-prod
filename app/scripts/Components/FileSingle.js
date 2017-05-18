@@ -1,10 +1,11 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {Link} from 'react-router';
 import store from '../store';
 import $ from 'jquery';
 
 
-export default React.createClass({
+let FileSingle = createReactClass({
   render() {
     let fileLink;
 
@@ -37,3 +38,5 @@ export default React.createClass({
 
 }
 });
+
+export default FileSingle;

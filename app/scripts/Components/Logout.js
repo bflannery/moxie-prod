@@ -1,9 +1,10 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {Link} from 'react-router';
 import store from '../store';
 
 
-export default React.createClass({
+let Logout = createReactClass({
 
   render() {
     return (
@@ -21,3 +22,5 @@ export default React.createClass({
     store.session.logout();
   }
 });
+
+export default Logout;

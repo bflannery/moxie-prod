@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import store from '../../store';
 
 import NewClientForm from '../NewClientForm';
@@ -8,7 +9,7 @@ import Sidebar from './Sidebar';
 import NavSideBar from './NavSideBar';
 import DropzoneModal from '../DropzoneModal';
 
-export default React.createClass({
+let MoxieHome = createReactClass({
 
   getInitialState() {
 
@@ -88,3 +89,5 @@ export default React.createClass({
     store.clients.toggleClientsSort();
   }
 });
+
+export default MoxieHome;

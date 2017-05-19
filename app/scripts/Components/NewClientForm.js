@@ -37,6 +37,8 @@ let NewClientForm = createReactClass({
     if(this.props.client) {
       let clientName = this.props.client.clientName;
       let clientId = this.props.client.objectId;
+      console.log(clientName);
+      console.log(clientId);
       let subFolderName = this.refs.folderName.value.toLowerCase();
       store.fileStore.createSubFolder(clientName, clientId, subFolderName);
 

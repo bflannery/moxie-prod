@@ -41,7 +41,7 @@ let MoxieClientHome = createReactClass({
       let client = store.clients.get(this.props.params.id);
       if(!client) {
           client = new Client({objectId: this.props.params.id});
-          window.localStorage.setItem('clientId', this.props.params.id)
+
       }
 
       client.fetch();
@@ -59,9 +59,12 @@ let MoxieClientHome = createReactClass({
   },
 
   updateState() {
+    window.localStorage.setItem('clientId', this.props.params.id)
+
     if(store.clients.get(this.props.params.id) !== undefined) {
     this.setState({
-      client: store.clients.get(this.props.params.id).toJSON()
+      client: store.clients.get(this.props.params.id).toJSON(),
+
     });
   }
     this.setState({

@@ -44,18 +44,21 @@ componentDidMount() {
   store.session.fetch();
   store.session.on('update change', this.updateState);
 
+  let client = store.clients.get(window.localStorage.clientId)
+  console.log(client);
+
+  client.fetch();
+  client.on('update change', this.updateState);
+
   let folder = store.folders.get(this.props.params.id);
+
   if(!folder) {
     folder = new Folder({objectId: this.props.params.id});
+    console.log(folder);
   }
 
   folder.fetch();
   folder.on('update change', this.updateState);
-
-  let client = store.clients.get(window.localStorage.clientId)
-
-  client.fetch();
-  client.on('update change', this.updateState);
 
 
 },
@@ -65,10 +68,12 @@ componentWillUnmount() {
   store.session.off('update change', this.updateState);
   store.clients.off('update change', this.updateState);
   store.folders.off('update change', this.updateState);
+  store.folders.get(this.props.params.id).off('update change', this.updateState);
   store.clients.get(window.localStorage.clientId).off('update change', this.updateState);
 },
 
 updateState() {
+  console.log(store.folders.get(this.props.params.id));
 
 if(store.clients.get(window.localStorage.clientId) !== undefined){
   this.setState({

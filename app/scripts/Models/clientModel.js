@@ -229,7 +229,7 @@ export default Backbone.Model.extend({
         });
     },
 
-    
+
 
     // ----------------------------
     // addClientLogo()

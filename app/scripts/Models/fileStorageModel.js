@@ -162,7 +162,8 @@ export default Backbone.Model.extend({
         success: (response) => {
           console.log('folder added to folders' );
           response = response.toJSON();
-          store.clients.get(response.clientId).addFolderToClientFolders(response.objectId, response.folderName, clientId);
+          console.log(response);
+          store.clients.get(response.clientId).addFolderToClientFolders(response.objectId, response.folderName, response.clientId, response.clientName);
         }
       }, {
         error: (xhr) => {

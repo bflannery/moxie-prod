@@ -6,7 +6,6 @@ import NavBarClientFolders from '../NavBarClientFolders';
 
 let NavSideBar = createReactClass({
   render() {
-    console.log(this.props);
     let navBar;
     if(this.props.session.auth === false) {
 

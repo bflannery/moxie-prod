@@ -17,6 +17,7 @@ let DropzoneModal = createReactClass({
   },
 
     render() {
+      console.log(this.props);
       let dropzoneFiles = (
               <div className="files-container">
                 <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop} id="dropzone" name="files" multiple/>
@@ -83,3 +84,5 @@ let DropzoneModal = createReactClass({
       store.session.set({addFileModal: false});
     }
   });
+
+export default DropzoneModal;

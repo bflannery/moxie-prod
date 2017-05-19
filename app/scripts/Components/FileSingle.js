@@ -7,6 +7,7 @@ import $ from 'jquery';
 
 let FileSingle = createReactClass({
   render() {
+    console.log(this.props);
     let fileLink;
 
     fileLink = (

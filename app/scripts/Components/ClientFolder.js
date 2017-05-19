@@ -8,6 +8,7 @@ import $ from 'jquery';
 let ClientFolder = createReactClass({
 
   render() {
+    console.log(this.props);
     if(this.props.session.auth === false) {
       return (
           <li className = "client-file">

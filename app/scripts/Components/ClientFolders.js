@@ -7,7 +7,7 @@ import store from '../store';
 let ClientFolders = createReactClass({
   render() {
 
-
+console.log(this.props);
     let clientFolders;
     if(!this.props.client.clientFolders) {
       clientFolders = <div />;

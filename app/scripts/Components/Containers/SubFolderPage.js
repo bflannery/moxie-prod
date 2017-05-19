@@ -73,7 +73,13 @@ componentWillUnmount() {
 },
 
 updateState() {
-  console.log(store.folders.get(this.props.params.id));
+  this.setState({
+
+    files: store.files.toJSON(),
+    clients: store.clients.toJSON(),
+    session: store.session.toJSON(),
+    folders: store.folders.toJSON()
+  })
 
 if(store.clients.get(window.localStorage.clientId) !== undefined){
   this.setState({
@@ -86,16 +92,10 @@ if(store.folders.get(this.props.params.id) !== undefined) {
     folder: store.folders.get(this.props.params.id).toJSON(),
     });
   }
-  this.setState({
-
-    files: store.files.toJSON(),
-    clients: store.clients.toJSON(),
-    session: store.session.toJSON(),
-    folders: store.folders.toJSON()
-  })
 },
   render() {
     console.log(this.state);
+    console.log(this.props);
     let styles = {
       height: "100px",
       backgroundImage: `url(${this.state.client.pic})`,

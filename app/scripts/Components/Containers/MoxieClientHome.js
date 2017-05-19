@@ -86,14 +86,14 @@ let MoxieClientHome = createReactClass({
    let clientContainer = <div className="main primary-container"/>
 
     if(this.state.client.clientName) {
-     clientContainer = (
-        <div className="main primary-container">
-          <h2> {this.state.client.clientName} </h2>
-          <ClientFolders client={this.state.client} session={this.state.session}/>
-        </div>
-    );
-
-        if(this.state.client.pic) {
+      if(!this.state.client.pic) {
+          clientContainer = (
+            <div className="main primary-container">
+              <h2> {this.state.client.clientName} </h2>
+              <ClientFolders client={this.state.client} session={this.state.session}/>
+            </div>
+          );
+        } else {
           clientContainer = (
             <div className="main primary-container">
               <div style={styles} className="client-logo"/>
@@ -101,18 +101,30 @@ let MoxieClientHome = createReactClass({
             </div>
           );
           }
+        }
 
+    if(this.state.session.addFolder === true) {
+              if(!this.state.client.pic) {
+                  clientContainer = (
+                    <div className="main primary-container">
+                      <h2> {this.state.client.clientName} </h2>
+                      <NewClientForm client={this.state.client}/>
+                      <ClientFolders client={this.state.client} session={this.state.session}/>
+                    </div>
+                    );
+              } else {
+                    clientContainer = (
+                      <div className="main primary-container">
+                        <div style={styles} className="client-logo"/>
+                        <NewClientForm client={this.state.client}/>
+                        <ClientFolders client={this.state.client} session={this.state.session}/>
+                        </div>
+                      );
+      }
+    }
 
-        if(this.state.session.addFolder === true) {
-            clientContainer = (
-               <div className="main primary-container">
-                 <h2> {this.state.client.clientName} </h2>
-                 <NewClientForm client={this.state.client}/>
-                 <ClientFolders client={this.state.client} session={this.state.session}/>
-               </div>
-             );
-
-           } else if(this.state.session.addPhotoModal === true) {
+    if(this.state.session.addPhotoModal === true) {
+              if(!this.state.client.pic) {
                clientContainer = (
                  <div className="main primary-container">
                    <h2> {this.state.client.clientName} </h2>
@@ -120,9 +132,16 @@ let MoxieClientHome = createReactClass({
                    <ClientFolders client={this.state.client} session={this.state.session}/>
                  </div>
                );
+             } else {
+               clientContainer = (
+                 <div className="main primary-container">
+                   <div style={styles} className="client-logo"/>
+                   <ImageModal client={this.state.client}/>
+                   <ClientFolders client={this.state.client} session={this.state.session}/>
+                 </div>
+               );
              }
-
-  }
+        }
 
 
       return (

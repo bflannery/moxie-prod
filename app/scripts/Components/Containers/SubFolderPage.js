@@ -98,7 +98,7 @@ if(store.folders.get(this.props.params.id) !== undefined) {
     console.log(this.props);
     let styles = {
       height: "100px",
-      backgroundImage: `url(${this.state.client.pic})`,
+      backgroundImage: `url(${this.state.client.clientLogo})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
     }
@@ -115,7 +115,7 @@ if(store.folders.get(this.props.params.id) !== undefined) {
           <SubFolderFiles files={this.state.files} folder={this.state.folder} session={this.state.session}/>
         </div>
       );
-      if(this.state.client.pic) {
+      if(this.state.client.clientLogo) {
         subFolderContainer = (
           <div className="main primary-container">
             <div style={styles} className="client-logo"/>

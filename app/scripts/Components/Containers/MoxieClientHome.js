@@ -32,9 +32,6 @@ let MoxieClientHome = createReactClass({
       store.clients.fetch();
       store.clients.on('uppdate change', this.updateState);
 
-      store.files.fetch();
-      store.files.on('update change', this.updateState);
-
       store.session.fetch();
       store.session.on('update change', this.updateState);
 
@@ -55,7 +52,6 @@ let MoxieClientHome = createReactClass({
     store.clients.get(this.props.params.id).off('update change', this.updateState);
     store.session.off('update change', this.updateState);
     store.clients.off('update change', this.updateState);
-    store.files.off('update change', this.updateState);
   },
 
   updateState() {
@@ -76,9 +72,10 @@ let MoxieClientHome = createReactClass({
 
 
   render() {
+    console.log(this.state);
     let styles = {
       height: "100px",
-      backgroundImage: `url(${this.state.client.pic})`,
+      backgroundImage: `url(${this.state.client.clientLogo})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
     }
@@ -86,7 +83,7 @@ let MoxieClientHome = createReactClass({
    let clientContainer = <div className="main primary-container"/>
 
     if(this.state.client.clientName) {
-      if(!this.state.client.pic) {
+      if(!this.state.client.clientLogo) {
           clientContainer = (
             <div className="main primary-container">
               <h2> {this.state.client.clientName} </h2>
@@ -104,7 +101,7 @@ let MoxieClientHome = createReactClass({
         }
 
     if(this.state.session.addFolder === true) {
-              if(!this.state.client.pic) {
+              if(!this.state.client.clientLogo) {
                   clientContainer = (
                     <div className="main primary-container">
                       <h2> {this.state.client.clientName} </h2>
@@ -124,7 +121,7 @@ let MoxieClientHome = createReactClass({
     }
 
     if(this.state.session.addPhotoModal === true) {
-              if(!this.state.client.pic) {
+              if(!this.state.client.clientLogo) {
                clientContainer = (
                  <div className="main primary-container">
                    <h2> {this.state.client.clientName} </h2>

@@ -17,6 +17,7 @@ let ImageModal = createReactClass({
   },
 
     render() {
+      console.log(this.props);
       let dropzoneFiles = (
               <div className="files-container">
                 <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop} id="dropzone"/>
@@ -67,14 +68,19 @@ let ImageModal = createReactClass({
 
 
   uploadPhoto(){
+    let photo = this.state.files[0];
+    let photoName = this.state.files[0].name;
+    let clientName = this.props.client.clientName;
+    let clientId = this.props.client.objectId;
+
     let fd = new FormData();
-    fd.append('upload', this.state.files[0])
+    fd.append('upload', photo)
     $.ajax({
       type: 'POST',
       data: fd,
       processData: false,
       contentType: false,
-      url: 'https://api.backendless.com/v1/files/Moxie/clients/'+ this.props.client.clientName + '/clientLogos/' + this.state.files[0].name,
+      url: 'https://api.backendless.com/v1/files/Moxie/clients/'+ clientName + '/clientLogos/' + photoName,
       headers: {
         'application-id': config.appId,
         'secret-key': config.secret,
@@ -82,8 +88,8 @@ let ImageModal = createReactClass({
       },
       success: (response)=>{
         response = JSON.parse(response);
-        console.log(response.fileURL);
-        store.clients.get(this.props.client.objectId).addClientLogo(response.fileURL);
+        console.log(response);
+        store.clients.get(clientId).addClientLogo(response.fileURL, clientId);
         store.session.set({addPhotoModal: false});
       }
     })

@@ -6,7 +6,6 @@ import store from '../store';
 let NewClientForm = createReactClass({
 
   render() {
-    console.log(this.props);
     let newSubFolder = (
       <form className="add-new-client" onSubmit={this.addFolder}>
         <i className="fa fa-folder-o folder-icon" aria-hidden="true"></i>
@@ -37,9 +36,7 @@ let NewClientForm = createReactClass({
     if(this.props.client) {
       let clientName = this.props.client.clientName;
       let clientId = this.props.client.objectId;
-      console.log(clientName);
-      console.log(clientId);
-      let subFolderName = this.refs.folderName.value.toLowerCase();
+      let subFolderName = this.refs.folderName.value
       store.fileStore.createSubFolder(clientName, clientId, subFolderName);
 
     } else {

@@ -67,7 +67,9 @@ initialize() {
       this.login(email, password);
     })
     .fail((xhr)=> {
-      console.log('User NOT Registered' , xhr);
+      if(xhr.responseJSON.code === 3033) {
+        alert('User Already Exists');
+      }
     });
   },
 
@@ -111,6 +113,9 @@ initialize() {
           store.clients.getClients(response.company);
         }
       }).fail((xhr)=>{
+        if(xhr.responseJSON.code === 3003) {
+          alert('Not Logged In, User Does Not Exist In Our System');
+        }
         console.log('Not Logged In' , xhr);
       });
     },

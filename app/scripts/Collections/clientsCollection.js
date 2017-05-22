@@ -17,22 +17,23 @@ export default Backbone.Collection.extend({
   // Push to Client Page
 
   getClients(company) {
+    company = company.replace(/\s+/g,'').toLowerCase();
     console.log(company);
     $.ajax({
       type: 'GET',
       url: 'https://api.backendless.com/v1/data/Clients',
       success: (clients) => {
         return clients.data.map((client, i ,arr)=>{
-          console.log(client);
-            if(client.clientName === company) {
+          let clientName = client.clientName.replace(/\s+/g,'').toLowerCase();
+          console.log(clientName);
+            if(clientName === company) {
               console.log(client.clientName)
               browserHistory.push('/clients/' + client.objectId);
-            this.trigger('change');
             }
         });
       },
       error: () => {
-        console.log('no clients');
+        alert('Client Does Not Exist, Please try Register again');
       }
       });
     },

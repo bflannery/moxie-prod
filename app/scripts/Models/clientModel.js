@@ -241,11 +241,17 @@ export default Backbone.Model.extend({
           // Log client logo not saved
     // ----------------------------
 
-    addClientLogo(fileUrl){
-      this.save({pic: fileUrl}, {type: 'PUT'},
-      {
+    addClientLogo(clientLogo, clientId){
+      $.ajax({
+        type: 'PUT',
+          url: `https://api.backendless.com/v1/data/Clients/${clientId}`,
+          contentType: 'application/json',
+          data: JSON.stringify({
+              clientLogo
+          }),
         success: () => {
           console.log('Client logo Saved');
+          window.location.reload();
       },
         error: (xhr)=> {
           console.log('Client logo not Saved' , xhr);

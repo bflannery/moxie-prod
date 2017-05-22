@@ -4,7 +4,6 @@ import {Link} from 'react-router';
 import store from '../store';
 
 
-
 let Login = createReactClass({
   render(){
     return (
@@ -16,7 +15,7 @@ let Login = createReactClass({
             <input className="login-input" ref="password" type="password" placeholder="Password"/>
             <button type="submit"> Login </button>
             <p className="message"> Not A Member? <Link to="/register"><u>Create An Account!</u></Link></p>
-            <p className="message"> Forgot Password? <Link to="/forgotpassword"><u>Retrieve Password</u></Link></p>
+
           </form>
         </div>
       </div>
@@ -41,3 +40,5 @@ let Login = createReactClass({
 });
 
 export default Login;
+
+// <p className="message"> Forgot Password? <Link to="/forgotpassword"><u>Retrieve Password</u></Link></p>

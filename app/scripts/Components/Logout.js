@@ -20,6 +20,7 @@ let Logout = createReactClass({
   handleLogout(e) {
     e.preventDefault();
     store.session.logout();
+
   }
 });
 

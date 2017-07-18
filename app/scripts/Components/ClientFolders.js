@@ -6,8 +6,6 @@ import store from '../store';
 
 let ClientFolders = createReactClass({
   render() {
-
-console.log(this.props);
     let clientFolders;
     if(!this.props.client.clientFolders) {
       clientFolders = <div />;
@@ -16,7 +14,7 @@ console.log(this.props);
       let sortedFolder = this.props.client.clientFolders.sort(function(a,b) {return (a.folderName > b.folderName) ? 1 : ((b.folderName > a.folderName) ? -1 : 0);} );
 
       clientFolders = sortedFolder.map((clientFolder, i, arr) => {
-        return <ClientFolder key={i} clientFolder={clientFolder} session={this.props.session}/>
+        return <ClientFolder key={i} clientFolder={clientFolder} session={this.props.session}/>;
       });
     }
 

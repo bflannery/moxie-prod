@@ -11,6 +11,7 @@ import DropzoneModal from '../DropzoneModal';
 
 let MoxieHome = createReactClass({
 
+
   getInitialState() {
 
     return {
@@ -54,6 +55,7 @@ let MoxieHome = createReactClass({
   },
 
   render() {
+    console.log(this.state);
     let newClientFormState = (
         <div className="main primary-container">
         <h2> moxie </h2>
@@ -89,5 +91,6 @@ let MoxieHome = createReactClass({
     store.clients.toggleClientsSort();
   }
 });
+
 
 export default MoxieHome;

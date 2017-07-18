@@ -41,4 +41,5 @@ export default {
   fileStorage : new fileStorage(),
   fileStore : new fileStore(),
 
+  activeSession: false
 };

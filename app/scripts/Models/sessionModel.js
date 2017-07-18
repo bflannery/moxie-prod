@@ -13,12 +13,11 @@ initialize() {
         }
       }
     },
-
-
   url: 'https://api.backendless.com/v1/data/Users',
   idAttribute: 'objectId',
   defaults: {
     auth: false,
+    isLoggedIn: false,
     passwordReset: null,
     addFileModal: false,
     addFolder: false,
@@ -26,7 +25,6 @@ initialize() {
     email: '',
     company: '',
   },
-
 
 
   // ----------------------------
@@ -105,10 +103,16 @@ initialize() {
 
       if(response.email.toLowerCase().includes('wemoxie')) {
           console.log('Logging in as Super User');
-          this.set({auth: true});
+          this.set({
+            auth: true,
+            isLoggedIn: true
+          });
           browserHistory.push('/home');
         } else {
-          this.set({auth: false});
+          this.set({
+            auth: false,
+            isLoggedIn: true
+          });
           console.log('Logging in as Client');
           store.clients.getClients(response.company);
         }
@@ -137,9 +141,11 @@ initialize() {
       url: 'https://api.backendless.com/v1/users/logout',
       success: ()=> {
         console.log('Logged Out');
+        this.set({isLoggedIn: false});
         this.clear();
         window.localStorage.clear();
         window.sessionStorage.clear();
+        window.location.reload();
         browserHistory.push('/');
       },
       error: (xhr) => {

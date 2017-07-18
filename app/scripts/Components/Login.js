@@ -35,6 +35,7 @@ let Login = createReactClass({
     store.session.login(email, password);
     this.refs.email.value = '';
     this.refs.password.value = '';
+
   }
 
 });

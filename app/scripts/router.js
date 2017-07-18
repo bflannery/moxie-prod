@@ -3,19 +3,14 @@ import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 
 import App from './Components/Containers/App';
 import LandingPage from './Components/Containers/LandingPage';
-
 import Register from './Components/RegisterPage';
 import ForgotPassword from './Components/ForgotPassword';
-
-
 import MoxieHome from './Components/Containers/MoxieHome';
 import MoxieClientHome from './Components/Containers/MoxieClientHome';
 import SubFolderPage from './Components/Containers/SubFolderPage';
 import ClientFilesPage from './Components/Containers/ClientFilesPage';
 import FilesPage from './Components/Containers/FilesPage';
 import ResultsPage from './Components/Containers/ResultsPage';
-
-
 
 const router = (
 

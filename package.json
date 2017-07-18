@@ -11,8 +11,8 @@
     "build-html": "npm run clean-html && if [ -f 'app/index.html' ]; then cp app/index.html docs/index.html && cp app/index.html docs/404.html; else echo you must have an index.html file; fi",
     "build-assets": "npm run clean-assets && if [ -d 'app/assets' ]; then cp -r app/assets docs; fi",
     "build-css": "npm run clean-css && if [ -f 'app/scss/main.scss' ]; then sass app/scss/main.scss:docs/main.css; else echo you must have a scss directory with a main.scss in your app to compile css; fi",
-    "prod-build-scripts": "npm run clean-scripts && if [ -f 'app/scripts/main.js' ]; then browserify ./app/scripts/main.js -g [ envify --NODE_ENV production ] -g uglify -p bundle-collapser/plugin | uglifyjs --compress --mangle > ./docs/main.js;else echo you must have a scripts directory with an main.js in your app to compile js; fi",
-    "dev-build-scripts" : "npm run clean-scripts && if [ -f 'app/scripts/main.js' ]; then browserify app/scripts/main.js -d -v --outfile docs/main.js; else echo you must have a scripts directory with an main.js in your app to compile js; fi",
+    "prod-build-scripts": "npm run clean-scripts && if [ -f 'app/scripts/main.js' ]; then browserify ./app/scripts/main.js -g [ envify --NODE_ENV production ] -g uglifyify -p bundle-collapser/plugin | uglifyjs --compress --mangle > ./docs/main.js;else echo you must have a scripts directory with an main.js in your app to compile js; fi",
+    "dev-build-scripts": "npm run clean-scripts && if [ -f 'app/scripts/main.js' ]; then browserify app/scripts/main.js -d -v --outfile docs/main.js; else echo you must have a scripts directory with an main.js in your app to compile js; fi",
     "build": "json-scaffold && npm run build-html && npm run build-assets && npm run build-css && npm run prod-build-scripts",
     "watch-html": "onchange 'app/*.html' -- npm run build-html",
     "watch-sass": "sass --watch app/scss:docs",
@@ -49,9 +49,11 @@
     "babel-register": "^6.23.0",
     "babelify": "^7.3.0",
     "browserify": "^14.1.0",
+    "bundle-collapser": "^1.2.1",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
     "chai-http": "^3.0.0",
+    "envify": "^4.0.0",
     "enzyme": "^2.7.1",
     "eslint": "^3.16.1",
     "eslint-plugin-react": "^6.10.0",
@@ -72,6 +74,8 @@
     "should": "^11.2.0",
     "sinon": "^2.0.0",
     "style-loader": "^0.17.0",
+    "uglify-js": "^3.0.10",
+    "uglifyify": "^3.0.4",
     "watchify": "^3.9.0"
   },
   "dependencies": {
@@ -85,6 +89,7 @@
     "react-file-download": "^0.3.2",
     "react-hot-loader": "^3.0.0-beta.7",
     "react-router": "^3.0.2",
+    "uglify-js": "^3.0.10",
     "underscore": "^1.8.3"
   }
 }

@@ -114,7 +114,7 @@ initialize() {
         }
       }).fail((xhr)=>{
         if(xhr.responseJSON.code === 3003) {
-          alert('Not Logged In, User Does Not Exist In Our System');
+          alert('Not Logged In, User Does Not Exist In Our System. Plase contact WeMoxie');
         }
         console.log('Not Logged In' , xhr);
       });

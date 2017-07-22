@@ -15,7 +15,6 @@ let MoxieHome = createReactClass({
   getInitialState() {
 
     return {
-
       session: store.session.toJSON(),
       files: store.files.toJSON(),
       clients: store.clients.toJSON(),

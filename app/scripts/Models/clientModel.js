@@ -10,7 +10,12 @@ export default Backbone.Model.extend({
     idAttribute: 'objectId',
     defaults: {
         clientName: '',
-        folderURL: ''
+        folderURL: '',
+        isDeleteing: false,
+        deleted: false,
+        isSaving: false,
+        saved: false,
+        isLoading: false,
     },
 
 
@@ -223,7 +228,7 @@ export default Backbone.Model.extend({
             success: () => {
                 console.log('client deleted!');
             },
-            error: () => {
+            error: (xhr) => {
                 console.log('client was NOT deleted!', xhr);
             }
         });

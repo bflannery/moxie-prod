@@ -1,5 +1,5 @@
 docs
 .sass-cache
-node_modules
 config.js
+node_modules
 .DS_Store

@@ -8,7 +8,12 @@ export default Backbone.Model.extend({
     url: 'https://api.backendless.com/v1/data/FolderFiles',
     idAttribute: 'objectId',
     defaults: {
-      name: ''
+      name: '',
+      isDeleteing: false,
+      deleted: false,
+      isSaving: false,
+      saved: false,
+      isLoading: false,
     },
   });
 

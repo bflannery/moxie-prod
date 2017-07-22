@@ -4,7 +4,6 @@ import store from '../store';
 
 
 let NewClientForm = createReactClass({
-
   render() {
     let newSubFolder = (
       <form className="add-new-client" onSubmit={this.addFolder}>
@@ -12,7 +11,6 @@ let NewClientForm = createReactClass({
         <input type="text" ref="folderName" className="client-input" placeholder="Add New Client"/>
       </form>
     );
-
     if(this.props.client) {
       newSubFolder = (
         <form className="add-new-client" onSubmit={this.addFolder}>
@@ -21,7 +19,6 @@ let NewClientForm = createReactClass({
         </form>
       );
     }
-
     return (
       <div>
         {newSubFolder}
@@ -29,7 +26,6 @@ let NewClientForm = createReactClass({
 
     );
   },
-
 
   addFolder(e) {
     e.preventDefault();
@@ -42,7 +38,7 @@ let NewClientForm = createReactClass({
     } else {
      let clientName = this.refs.folderName.value;
      store.fileStore.createClientFolder(clientName);
-     store.session.set({ addFolder: false});
+     store.session.set({ addFolder: false });
    }
   }
 });

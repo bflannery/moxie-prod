@@ -12,6 +12,11 @@ export default Backbone.Model.extend({
   defaults: {
     folderName: '',
     folderURL: '',
+    isDeleteing: false,
+    deleted: false,
+    isSaving: false,
+    saved: false,
+    isLoading: false,
   },
 
 

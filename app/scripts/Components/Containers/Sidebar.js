@@ -76,6 +76,7 @@ let Sidebar = createReactClass({
 
   toggleNewFolder(e) {
     store.session.set({ addFolder: true });
+    
   },
 
   dropZoneModal(e) {

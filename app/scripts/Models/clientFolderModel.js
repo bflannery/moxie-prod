@@ -6,6 +6,15 @@ import store from '../store';
 export default Backbone.Model.extend({
   url: 'https://api.backendless.com/v1/data/ClientFolders',
   idAttribute: 'objectId',
+  defaults: {
+      clientName: '',
+      folderURL: '',
+      isDeleteing: false,
+      deleted: false,
+      isSaving: false,
+      saved: false,
+      isLoading: false,
+  },
 
 
   // ----------------------------

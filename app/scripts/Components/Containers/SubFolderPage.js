@@ -97,7 +97,7 @@ if(store.folders.get(this.props.params.id) !== undefined) {
     console.log(this.state);
     console.log(this.props);
     let styles = {
-      height: "100px",
+      height: '100px',
       backgroundImage: `url(${this.state.client.clientLogo})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',

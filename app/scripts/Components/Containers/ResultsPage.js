@@ -4,6 +4,7 @@ import {browserHistory} from 'react-router';
 import { Link } from 'react-router';
 
 import store from '../../store';
+import Client from '../../Models/ClientModel'
 import ClientFiles from '../ClientFiles';
 import SearchFiles from '../SearchFiles';
 

@@ -11,6 +11,11 @@ export default Backbone.Model.extend({
   idAttribute: 'objectId',
   defaults: {
     fileName: '',
+    isDeleteing: false,
+    deleted: false,
+    isSaving: false,
+    saved: false,
+    isLoading: false,
   },
 
   // ----------------------------

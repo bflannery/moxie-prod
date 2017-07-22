@@ -11,6 +11,11 @@ export default Backbone.Model.extend({
   idAttribute: 'objectId',
   defaults: {
     name: '',
+    isDeleteing: false,
+    deleted: false,
+    isSaving: false,
+    saved: false,
+    isLoading: false,
   },
 
 
@@ -103,6 +108,7 @@ export default Backbone.Model.extend({
       }, {
         success: (response) => {
           console.log('client created');
+          this.set({ saved: true })
           response = response.toJSON();
           browserHistory.push(`clients/${response.objectId}`);
         },

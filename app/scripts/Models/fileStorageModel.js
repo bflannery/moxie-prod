@@ -16,6 +16,7 @@ export default Backbone.Model.extend({
     isSaving: false,
     saved: false,
     isLoading: false,
+    loaded: false,
   },
 
 
@@ -85,15 +86,17 @@ export default Backbone.Model.extend({
   // ----------------------------
 
   createClientFolder(clientName) {
-    let folder = 'moxie';
+    store.session.set({isSaving: true});
+    
+    let file = 'moxie.txt';
     let fd = new FormData();
-    fd.append('upload', folder);
+    fd.append('upload', file);
     $.ajax({
       type: 'POST',
       data: fd,
+      contentType: 'multipart/form-data',
       processData: false,
-      contentType: false,
-      url: 'https://api.backendless.com/v1/files/Moxie/clients/' + clientName + '/' + 'moxie',
+      url: 'https://api.backendless.com/v1/files/Moxie/Clients/' + clientName + '/' + 'moxie',
     }).done((response) => {
       console.log('Client Folder created in Client Folder in Storage');
       response = JSON.parse(response);
@@ -117,7 +120,7 @@ export default Backbone.Model.extend({
         }
       });
     }).fail((xhr) => {
-      console.log('Client Folder created in Client Folder in Storage ', xhr);
+      console.log('Client Folder not created in Client Folder in Storage ', xhr);
     });
   },
 

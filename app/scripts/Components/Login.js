@@ -5,7 +5,9 @@ import store from '../store';
 
 
 let Login = createReactClass({
+
   render(){
+    console.log(this.state);
     return (
       <div className="login-container">
         <div className="form-container">

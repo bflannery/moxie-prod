@@ -1,6 +1,7 @@
 import Backbone from 'backbone';
 import clientModel from '../Models/clientModel';
 import store from '../store';
+
 import $ from 'jquery';
 import {browserHistory} from 'react-router';
 
@@ -17,6 +18,9 @@ export default Backbone.Collection.extend({
   // Push to Client Page
 
   getClients(company) {
+    store.client.set({
+      isLoading: true
+    })
     company = company.replace(/\s+/g,'').toLowerCase();
     console.log(company);
     $.ajax({
@@ -27,6 +31,10 @@ export default Backbone.Collection.extend({
           let clientName = client.clientName.replace(/\s+/g,'').toLowerCase();
           console.log(clientName);
             if(clientName === company) {
+              store.client.set({
+                isLoading: false,
+                hasLoaded: true,
+              })
               console.log(client.clientName)
               browserHistory.push('/clients/' + client.objectId);
             }
@@ -54,7 +62,7 @@ export default Backbone.Collection.extend({
             } else {
               $.ajax({
                 type: 'DELETE',
-                url: `https://api.backendless.com/v1/data/Clients/${client.objectId}`,
+                url:`https://api.backendless.com/v1/data/Clients/${client.objectId}`,
                 success: () => {
                   console.log('client deleted from clients collection');
                 },

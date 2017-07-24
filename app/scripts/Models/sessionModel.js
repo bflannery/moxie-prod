@@ -1,7 +1,6 @@
 import {browserHistory} from 'react-router';
 import Backbone from 'backbone';
 import $ from 'jquery';
-import config from '../config';
 import store from '../store';
 
 export default Backbone.Model.extend({
@@ -17,7 +16,16 @@ initialize() {
   idAttribute: 'objectId',
   defaults: {
     auth: false,
+    saved: false,
+    isSaving: false,
+    LoggingIn: false,
     isLoggedIn: false,
+    LoggedOut: false,
+    isLoggedOut: false,
+    isLoading: false,
+    loaded: false,
+    isDeleting: false,
+    deleted: false,
     passwordReset: null,
     addFileModal: false,
     addFolder: false,
@@ -61,6 +69,9 @@ initialize() {
       url:'https://api.backendless.com/v1/users/register'
     })
     .done((response)=> {
+      this.set({
+        saved: true
+      });
       console.log('User Registered');
       this.login(email, password);
     })
@@ -68,6 +79,7 @@ initialize() {
       if(xhr.responseJSON.code === 3033) {
         alert('User Already Exists');
       }
+      alert('User Not Saved. Please Contact Administrator');
     });
   },
 
@@ -93,27 +105,36 @@ initialize() {
 // ----------------------------
 
   login(login, password){
+    this.set({
+      isLoading: true
+    });
+
     this.save({ login, password }, {
       type: 'POST',
       url: 'https://api.backendless.com/v1/users/login'
     }).done((response)=> {
+
       window.localStorage.setItem('company', response.company);
       window.localStorage.setItem('user-token',response['user-token']);
       window.localStorage.setItem('ownerId',response.ownerId);
 
       if(response.email.toLowerCase().includes('wemoxie')) {
           console.log('Logging in as Super User');
+
           this.set({
             auth: true,
-            isLoggedIn: true
+            isLoggedIn: true,
           });
+
           browserHistory.push('/home');
         } else {
+          console.log('Logging in as Client');
+
           this.set({
             auth: false,
             isLoggedIn: true
           });
-          console.log('Logging in as Client');
+
           store.clients.getClients(response.company);
         }
       }).fail((xhr)=>{

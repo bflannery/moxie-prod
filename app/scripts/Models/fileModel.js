@@ -1,6 +1,5 @@
 import Backbone from 'backbone';
 import $ from 'jquery';
-import config from '../config';
 import {
   browserHistory
 } from 'react-router';
@@ -16,6 +15,7 @@ export default Backbone.Model.extend({
     isSaving: false,
     saved: false,
     isLoading: false,
+    loaded: false,
   },
 
   // ----------------------------
@@ -238,6 +238,7 @@ export default Backbone.Model.extend({
           url: `https://api.backendless.com/v1/data/FolderFiles/${folderFile.objectId}`,
           success: () => {
             console.log('FolderFile deleted from FolderFiles');
+            window.location.reload();
           }
         });
       }

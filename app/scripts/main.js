@@ -10,8 +10,6 @@ let appContainer = document.getElementById('app-container');
 $(document).ajaxSend((evt, xhr, opts) => {
 
 console.log('HTTP Request: ', opts.type);
-
-
 xhr.setRequestHeader('application-id', config.appId);
 xhr.setRequestHeader('secret-key', config.secretKey);
 xhr.setRequestHeader('application-type', 'REST');

@@ -74,7 +74,7 @@ let MoxieClientHome = createReactClass({
   render() {
     console.log(this.state);
     let styles = {
-      height: "100px",
+      height: '100px',
       backgroundImage: `url(${this.state.client.clientLogo})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
@@ -82,6 +82,10 @@ let MoxieClientHome = createReactClass({
 
    let clientContainer = <div className="main primary-container"/>
 
+
+   if(store.session.isSaving) {
+     clientContainer = <LoadingView />;
+   }
     if(this.state.client.clientName) {
       if(!this.state.client.clientLogo) {
           clientContainer = (
@@ -155,3 +159,9 @@ let MoxieClientHome = createReactClass({
 });
 
 export default MoxieClientHome;
+
+export const LoadingView = () => (
+  <div style={{ width: '100%', textAlign: 'center', padding: 30 }}>
+    <span><i className="fa fa-spin fa-spinner" /> Loading...</span>
+  </div>
+)

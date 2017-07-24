@@ -9,6 +9,7 @@ export default Backbone.Collection.extend({
     url: 'https://api.backendless.com/v1/data/Files',
 
     parse(data) {
+      if(data) {
       return data.data.sort(function(a,b){
         let nameA = a.name;
         let nameB = b.name;
@@ -21,4 +22,5 @@ export default Backbone.Collection.extend({
         return 0;
       });
     }
+  }
 });

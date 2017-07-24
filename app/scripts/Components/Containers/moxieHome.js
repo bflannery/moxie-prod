@@ -10,9 +10,8 @@ import NavSideBar from './NavSideBar';
 import DropzoneModal from '../DropzoneModal';
 
 let MoxieHome = createReactClass({
-
-
   getInitialState() {
+    store.session.set({isSaving: false});
 
     return {
       session: store.session.toJSON(),
@@ -23,6 +22,7 @@ let MoxieHome = createReactClass({
   },
 
   componentDidMount() {
+
     store.session.fetch();
     store.session.on('update change', this.updateState);
 
@@ -34,7 +34,6 @@ let MoxieHome = createReactClass({
 
     store.folders.fetch();
     store.folder.on('update change', this.updateState);
-
   },
 
   componentWillUnmount() {
@@ -55,12 +54,22 @@ let MoxieHome = createReactClass({
 
   render() {
     console.log(this.state);
-    let newClientFormState = (
-        <div className="main primary-container">
-        <h2> moxie </h2>
-          <ClientsList clients={this.state.clients} files={this.state.files}/>
-        </div>
-    );
+
+let newClientFormState;
+
+newClientFormState = (
+      <div className="main primary-container">
+      <h2> moxie </h2>
+        <ClientsList clients={this.state.clients} files={this.state.files} state={this.state}/>
+      </div>
+  );
+
+
+
+if(store.session.isSaving) {
+  newClientFormState = <LoadingView />;
+}
+
 
     if(this.state.session.addFolder === true) {
        newClientFormState = (
@@ -91,5 +100,10 @@ let MoxieHome = createReactClass({
   }
 });
 
-
 export default MoxieHome;
+
+export const LoadingView = () => (
+  <div style={{ width: '100%', textAlign: 'center', padding: 30 }}>
+    <span><i className="fa fa-spin fa-spinner" /> Loading...</span>
+  </div>
+)

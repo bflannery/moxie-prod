@@ -3,7 +3,9 @@ import createReactClass from 'create-react-class';
 import ClientSingle from './ClientSingle';
 
 let ClientsList = createReactClass({
+
   render() {
+      console.log(this.props)
     let clients;
     if(this.props.clients.length < 1) {
       clients = <div/>;

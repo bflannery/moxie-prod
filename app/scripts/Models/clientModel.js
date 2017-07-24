@@ -16,9 +16,8 @@ export default Backbone.Model.extend({
         isSaving: false,
         saved: false,
         isLoading: false,
+        loaded: false,
     },
-
-
 
     // ----------------------------
     // addFileToClientFiles()
